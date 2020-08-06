@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo博客搭建笔记1 | 晴仔Tracy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言最近误打误撞地参加了阿里云的《云开发校园合伙人创造营》，发现许多小伙伴都有自己的博客。自己只会一点基础的HTML、CSS和PHP，又心痒想赶快拥有一个，于是就有了这个博客。 综合容易上手但又保留一些自己开发部署的空间这两点，我选择了hexo，它还可以直接推到GitHub Pages (github.io)上，很方便。现在还没搭建好，先发一篇文章露个脸~ 我还没有JavaScript, json">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客搭建笔记1">
+<meta property="og:url" content="https://tracytangyc.github.io/2020/0806_hexo1/index.html">
+<meta property="og:site_name" content="晴仔Tracy">
+<meta property="og:description" content="前言最近误打误撞地参加了阿里云的《云开发校园合伙人创造营》，发现许多小伙伴都有自己的博客。自己只会一点基础的HTML、CSS和PHP，又心痒想赶快拥有一个，于是就有了这个博客。 综合容易上手但又保留一些自己开发部署的空间这两点，我选择了hexo，它还可以直接推到GitHub Pages (github.io)上，很方便。现在还没搭建好，先发一篇文章露个脸~ 我还没有JavaScript, json">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tracytangyc.github.io/images/2020/0806_hexo1_1.png">
+<meta property="article:published_time" content="2020-08-06T04:59:17.000Z">
+<meta property="article:modified_time" content="2020-08-06T09:53:05.525Z">
+<meta property="article:author" content="tracytangyc">
+<meta property="article:tag" content="web">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tracytangyc.github.io/images/2020/0806_hexo1_1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="晴仔Tracy" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">晴仔Tracy</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://tracytangyc.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hexo1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/0806_hexo1/" class="article-date">
+  <time datetime="2020-08-06T04:59:17.000Z" itemprop="datePublished">2020/8/6</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo博客搭建笔记1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近误打误撞地参加了阿里云的《云开发校园合伙人创造营》，发现许多小伙伴都有自己的博客。自己只会一点基础的HTML、CSS和PHP，又心痒想赶快拥有一个，于是就有了这个博客。</p>
+<p>综合容易上手但又保留一些自己开发部署的空间这两点，我选择了hexo，它还可以直接推到GitHub Pages (github.io)上，很方便。现在还没搭建好，先发一篇文章露个脸~</p>
+<p>我还没有JavaScript, json, typescript等基础，对服务器、http、IP、域名、Serverless、NodeJS框架等等的概念，也是这两天才大致捋清楚。所以这系列的文章就当是记录一下我<del>学习</del>囫囵吞枣的历程，或许一些操作不太规范，但先追求完成，在追求完美。从经验中学习，我也会慢慢补齐知识漏洞的！<br><br></p>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>我的运行环境：Windows Ubuntu WSL（指令与一般Ubuntu相同）<br>先安装NodeJS</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt upgrade</span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -</span><br><span class="line">sudo apt nodejs</span><br></pre></td></tr></table></figure>
+
+<p>查看NodeJS与npm版本（目前最新版本分别为v14.x和v6.x）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nodejs -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p>接下来需要安装并配置好自己的git，这里不作展示了。</p>
+<p>安装hexo</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p><code>-g</code>指general，使hexo可全局使用，而非只安装在一个项目中。<br><br></p>
+<h2 id="2-创建网站与文章"><a href="#2-创建网站与文章" class="headerlink" title="2. 创建网站与文章"></a>2. 创建网站与文章</h2><p>新建一个hexo项目</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+
+<p>安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> &lt;directory&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>打开你的项目后，就可以正式开工了。<br>首先在项目根目录下的<code>_config.yml</code>修改基本网站信息，比如</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">晴仔的博客</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;我的详细描述~&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span>    <span class="comment">#用于SEO的关键字</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Tracy</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="attr">timezone:</span>    <span class="comment">#默认本地时区</span></span><br></pre></td></tr></table></figure>
+
+<p>更多配置选项参考，可以前往hexo官方文档 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">https://hexo.io/zh-cn/docs/configuration</a><br><code>hexo init</code>新建的项目默认采用landscape主题，并已经导入了主题文件，在根目录下的<code>/themes/landscape</code>中。<br>更多主题可以在 <a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a> 或者第三方找到。如需更换，首先修改上述<code>_config.yml</code>中的以下信息：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">&lt;theme</span> <span class="string">name&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>再把主题代码放置（如git clone）到<code>/themes</code>目录下。如果主题有新的依赖，需要修改<code>packages.json</code>，并再次执行<code>npm i</code> (i for install)。</p>
+<p>接着配置你的域名。如果使用GitHub Pages（GitHub免费提供的<code>&lt;username&gt;.github.io</code>域名），<code>_config.yml</code>代码如下</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line">  <span class="attr">message:</span> <span class="string">hexo</span> <span class="string">deploy</span>    <span class="comment">#自定义git commit时的消息</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来尝试添加一篇文章，若文章标题包含空格，采用双引号包裹</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这将默认生成一个markdown文件到<code>/sources/_posts</code>目录下，若需修改目录，在上述命令中加入<code>-p &lt;directory&gt;</code>。<br>接着就可以开始写文章啦~<br><br></p>
+<h2 id="3-部署网站"><a href="#3-部署网站" class="headerlink" title="3. 部署网站"></a>3. 部署网站</h2><p>如果需要快速托管代码到Github</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>可以先清除缓存和已产生的静态文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+
+<p>生成静态文件 (g for generate)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<p>启动伺服器 (s for server)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>终端会提示以<code>http://localhost:4000/</code>查看网站。按<code>Ctrl+C</code>结束进程。</p>
+<p>部署网站 (d for deploy)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>可以采用<code>hexo d -g</code> 或 <code>hexo g -d</code>同时完成generate和deploy。</p>
+<p><strong>大功告成！</strong><br><br></p>
+<h2 id="GitHub-Pages设置"><a href="#GitHub-Pages设置" class="headerlink" title="GitHub Pages设置"></a>GitHub Pages设置</h2><p>如果你的GitHub账号设置了<code>Keep my email addresses private</code>，你需要提前配置git，否则hexo无法push代码到你的仓库中<br><img src="../../images/2020/0806_hexo1_1.png"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;email you use for github&quot;</span></span><br></pre></td></tr></table></figure>
+<p>然后每次deploy的时候按终端提示输入GitHub的username和password即可。<br><br><br><br></p>
+<p><em>参考资料：</em></p>
+<ol>
+<li>hexo. <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/index.html">文档.</a></li>
+<li>Medium.com. <a target="_blank" rel="noopener" href="https://medium.com/@ab.kotecha/successfully-install-the-latest-nodejs-on-the-latest-ubuntu-on-wsl-v1-fix-gpg-key-18d532250219">Successfully install the latest NodeJS on the latest Ubuntu on WSL (v1), fix GPG key error.</a></li>
+<li>winney. <a target="_blank" rel="noopener" href="https://winney07.github.io/2018/08/01/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">Hexo + GitHub Pages 搭建个人博客.</a></li>
+<li>GitHub.com. <a target="_blank" rel="noopener" href="https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/setting-your-commit-email-address">Setting your commit email address.</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://tracytangyc.github.io/2020/0806_hexo1/" data-id="ckdilnohn000656m29tbx00rw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/0806_aliyun-ecs-newbie-class2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Class 2 | 阿里云：ECS 7天实践训练营 新人路线</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/courses/" rel="tag">courses</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/0806_hexo1/">Hexo博客搭建笔记1</a>
+          </li>
+        
+          <li>
+            <a href="/2020/0806_aliyun-ecs-newbie-class2/">Class 2 | 阿里云：ECS 7天实践训练营 新人路线</a>
+          </li>
+        
+          <li>
+            <a href="/2020/0730_bash-basics/">基础 Bash命令 | Bash与Python脚本编程（英文）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 tracytangyc<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
