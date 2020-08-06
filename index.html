@@ -19,7 +19,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tracytangyc.github.io","root":"/","scheme":"Muse","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+    var CONFIG = {"hostname":"tracytangyc.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
   <meta name="description" content="共享知识，共赢快乐">
@@ -229,10 +229,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020/8/6 12:59 / 修改时间：18:39" itemprop="dateCreated datePublished" datetime="2020-08-06T12:59:17+08:00">2020/8/6</time>
+              <time title="创建时间：2020/8/6 12:59" itemprop="dateCreated datePublished" datetime="2020-08-06T12:59:17+08:00">2020/8/6</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020/8/7 00:38" itemprop="dateModified" datetime="2020-08-07T00:38:01+08:00">2020/8/7</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -254,66 +260,14 @@
     <div class="post-body" itemprop="articleBody">
           <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近误打误撞地参加了阿里云的《云开发校园合伙人创造营》，发现许多小伙伴都有自己的博客。自己只会一点基础的HTML、CSS和PHP，又心痒想赶快拥有一个，于是就有了这个博客。</p>
 <p>综合容易上手但又保留一些自己开发部署的空间这两点，我选择了hexo，它还可以直接推到GitHub Pages (github.io)上，很方便。现在还没搭建好，先发一篇文章露个脸~</p>
-<p>我还没有JavaScript, json, typescript等基础，对服务器、http、IP、域名、Serverless、NodeJS框架等等的概念，也是这两天才大致捋清楚。所以这系列的文章就当是记录一下我<del>学习</del>囫囵吞枣的历程，或许一些操作不太规范，但先追求完成，在追求完美。从经验中学习，我也会慢慢补齐知识漏洞的！<br><br></p>
-<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>我的运行环境：Windows Ubuntu WSL（指令与一般Ubuntu相同）<br>先安装NodeJS</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt upgrade</span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -</span><br><span class="line">sudo apt nodejs</span><br></pre></td></tr></table></figure>
-
-<p>查看NodeJS与npm版本（目前最新版本分别为v14.x和v6.x）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nodejs -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-
-<p>接下来需要安装并配置好自己的git，这里不作展示了。</p>
-<p>安装hexo</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p><code>-g</code>指general，使hexo可全局使用，而非只安装在一个项目中。<br><br></p>
-<h2 id="2-创建网站与文章"><a href="#2-创建网站与文章" class="headerlink" title="2. 创建网站与文章"></a>2. 创建网站与文章</h2><p>新建一个hexo项目</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;directory&gt;</span><br></pre></td></tr></table></figure>
-
-<p>安装依赖</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> &lt;directory&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-<p>打开你的项目后，就可以正式开工了。<br>首先在项目根目录下的<code>_config.yml</code>修改基本网站信息，比如</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">晴仔的博客</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;我的详细描述~&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span>    <span class="comment">#用于SEO的关键字</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Tracy</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="attr">timezone:</span>    <span class="comment">#默认本地时区</span></span><br></pre></td></tr></table></figure>
-
-<p>更多配置选项参考，可以前往hexo官方文档 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">https://hexo.io/zh-cn/docs/configuration</a><br><code>hexo init</code>新建的项目默认采用landscape主题，并已经导入了主题文件，在根目录下的<code>/themes/sunshine</code>中。<br>更多主题可以在 <a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a> 或者第三方找到。如需更换，首先修改上述<code>_config.yml</code>中的以下信息：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">&lt;theme</span> <span class="string">name&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>再把主题代码放置（如git clone）到<code>/themes</code>目录下。如果主题有新的依赖，需要修改<code>packages.json</code>，并再次执行<code>npm i</code> (i for install)。</p>
-<p>接着配置你的域名。如果使用GitHub Pages（GitHub免费提供的<code>&lt;username&gt;.github.io</code>域名），<code>_config.yml</code>代码如下</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line">  <span class="attr">message:</span> <span class="string">hexo</span> <span class="string">deploy</span>    <span class="comment">#自定义git commit时的消息</span></span><br></pre></td></tr></table></figure>
-
-<p>接下来尝试添加一篇文章，若文章标题包含空格，采用双引号包裹</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>这将默认生成一个markdown文件到<code>/sources/_posts</code>目录下，若需修改目录，在上述命令中加入<code>-p &lt;directory&gt;</code>。<br>接着就可以开始写文章啦~<br><br></p>
-<h2 id="3-部署网站"><a href="#3-部署网站" class="headerlink" title="3. 部署网站"></a>3. 部署网站</h2><p>如果需要快速托管代码到Github</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>可以先清除缓存和已产生的静态文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-
-<p>生成静态文件 (g for generate)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<p>启动伺服器 (s for server)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p>终端会提示以<code>http://localhost:4000/</code>查看网站。按<code>Ctrl+C</code>结束进程。</p>
-<p>部署网站 (d for deploy)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>可以采用<code>hexo d -g</code> 或 <code>hexo g -d</code>同时完成generate和deploy。</p>
-<p><strong>大功告成！</strong><br><br></p>
-<h2 id="GitHub-Pages设置"><a href="#GitHub-Pages设置" class="headerlink" title="GitHub Pages设置"></a>GitHub Pages设置</h2><p>如果你的GitHub账号设置了<code>Keep my email addresses private</code>，你需要提前配置git，否则hexo无法push代码到你的仓库中<br><img src="../../images/2020/0806_hexo1_1.png"></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;email you use for github&quot;</span></span><br></pre></td></tr></table></figure>
-<p>然后每次deploy的时候按终端提示输入GitHub的username和password即可。<br><br><br><br></p>
-<p><em>参考资料：</em></p>
-<ol>
-<li>hexo. <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/index.html">文档.</a></li>
-<li>Medium.com. <a target="_blank" rel="noopener" href="https://medium.com/@ab.kotecha/successfully-install-the-latest-nodejs-on-the-latest-ubuntu-on-wsl-v1-fix-gpg-key-18d532250219">Successfully install the latest NodeJS on the latest Ubuntu on WSL (v1), fix GPG key error.</a></li>
-<li>winney. <a target="_blank" rel="noopener" href="https://winney07.github.io/2018/08/01/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">Hexo + GitHub Pages 搭建个人博客.</a></li>
-<li>GitHub.com. <a target="_blank" rel="noopener" href="https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/setting-your-commit-email-address">Setting your commit email address.</a></li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/0806_hexo1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -357,10 +311,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020/8/6 12:57 / 修改时间：18:39" itemprop="dateCreated datePublished" datetime="2020-08-06T12:57:24+08:00">2020/8/6</time>
+              <time title="创建时间：2020/8/6 12:57" itemprop="dateCreated datePublished" datetime="2020-08-06T12:57:24+08:00">2020/8/6</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020/8/7 00:21" itemprop="dateModified" datetime="2020-08-07T00:21:36+08:00">2020/8/7</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -388,44 +348,14 @@
 <h2 id="1-开通云服务器"><a href="#1-开通云服务器" class="headerlink" title="1. 开通云服务器"></a>1. 开通云服务器</h2><br>
 
 <p>有学生认证的同学可以免费领取半年的ECS产品。ECS全称是<strong>弹性计算服务Elastic Compute Service</strong>，昨天直播老师敲黑板了，要记住！</p>
-<blockquote>
-<p>云服务器 ECS（Elastic Compute Service）是一种弹性可伸缩的计算服务，助您降低 IT 成本，提升运维效率，使您更专注于核心业务创新。<br>如果没有半年学生免费ECS实例：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/adc/scenario/fdecd528be6145dcbe747f0206e361f3?spm=5176.14319553.J_8315879550.2.3c2413bfKDFSk9">领取免费ECS资源，30分钟完成基于ECS的博客搭建</a></p>
-</blockquote>
-<br>
-
-<h4 id="计费方式："><a href="#计费方式：" class="headerlink" title="计费方式："></a>计费方式：</h4><p>一般来说，<strong>包年包月</strong>适用于长期运行，<strong>按量付费</strong>适用于测试<br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_1.png"><br><br></p>
-<h4 id="地域："><a href="#地域：" class="headerlink" title="地域："></a>地域：</h4><p>不同地域物理上不相通，开通后无法转换。选择离访问者越近的，速度越快<br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_2.png"><br><br></p>
-<h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4><p>此处免费领取的ECS可以是ecs.t5-c1m2.large，2核、4GiB（之前已经领取，忘了还有什么免费选项了）<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/58291.html">&lt;如何挑选实例&gt;</a><br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_3.png"><br><br></p>
-<h4 id="镜像："><a href="#镜像：" class="headerlink" title="镜像："></a>镜像：</h4><p>按照课程需要，选择 <strong>镜像市场</strong> &gt; LAMP环境（Ubuntu18.04 Apache PHP7.x）<br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_4.png"><br><br></p>
-<h4 id="存储："><a href="#存储：" class="headerlink" title="存储："></a>存储：</h4><p>默认系统盘是高校云盘 40GB，如有需要，可以选择另外购买SSD数据盘<br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_5.png"></p>
-<br>
-<br>
-
-<h2 id="2-安装网页运行环境"><a href="#2-安装网页运行环境" class="headerlink" title="2. 安装网页运行环境"></a>2. 安装网页运行环境</h2><br>
-
-<h4 id="更换镜像"><a href="#更换镜像" class="headerlink" title="更换镜像"></a>更换镜像</h4><p>如需更换镜像，先进入<a target="_blank" rel="noopener" href="https://homenew.console.aliyun.com/">控制台</a>，左侧橙色菜单栏进入<strong>云服务器ECS</strong>，<strong>我的资源</strong>卡片里点击进入实例。若有数据资源，先快照和备份。<br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_6.png"></p>
-<p>点击右上角 <strong>停止</strong> &gt; 强制停止<br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_7.png"><br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_8.png"></p>
-<p>左侧灰色菜单栏点击<strong>实例</strong>进入实例列表，右侧点击 <strong>更多</strong> &gt; 磁盘和镜像 &gt; 更换操作系统<br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_9.png"><br>购买镜像时，选择用户密码模式。</p>
-<br>
-
-<h4 id="设置安全组"><a href="#设置安全组" class="headerlink" title="设置安全组"></a>设置安全组</h4><p>进入实例后，左侧点击 <strong>本实例安全组</strong> &gt; <strong>配置规则</strong> &gt; <strong>手动添加</strong> 一条入方向访问规则。<br>入门学习时可以先打开所有端口和授权对象，但不要在上线产品中这么做<br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_10.png"><br><br></p>
-<h4 id="配置成功"><a href="#配置成功" class="headerlink" title="配置成功"></a>配置成功</h4><p>访问 http://&lt;公网IP&gt;/，检查你的网页是否正常<br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_11.png"></p>
-<br>
-<br>
-
-<h2 id="3-制作个人简历网页"><a href="#3-制作个人简历网页" class="headerlink" title="3. 制作个人简历网页"></a>3. 制作个人简历网页</h2><br>
-
-<p>根据提供的<a target="_blank" rel="noopener" href="https://edu.aliyun.com/course/147/material/6435/download">响应式HTML简历模板</a>下载HTML和资源文件</p>
-<p>因应个人资料在HTML中修改文本和替换图片。<br>截一部分我的简历，修改了部分样式（技能条太短了不好看，百分比瞎整的，我还是小白！！！）</p>
-<p><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_12.jpg"></p>
-<h2 id="4-将简历上传到服务器​"><a href="#4-将简历上传到服务器​" class="headerlink" title="4. 将简历上传到服务器​"></a>4. 将简历上传到服务器​</h2><br>
-
-<h4 id="FileZilla"><a href="#FileZilla" class="headerlink" title="FileZilla"></a>FileZilla</h4><p>我们需要通过SFTP协议把文件传输到云服务器上，推荐开源跨平台软件<a target="_blank" rel="noopener" href="https://filezilla-project.org/download.php?type=client">FileZilla</a>。</p>
-<p>在主机栏填写<code>sftp://&lt;公网IP&gt;</code>，输入实例的用户名和密码，端口号<code>22</code> &gt; <strong>快速连接</strong><br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_13.png"></p>
-<br>
-
-<h4 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h4><p>右侧<strong>远程站点</strong>的目录中，找到<code>/data/wwwroot/default</code>路径，新建一个文件夹<code>preset</code>，把所有现有文件拖拽进<code>preset</code>，并把自己的简历项目文件拖拽至当前目录空白处<br><img src="../../images/2020/0806_aliyun-ecs-newbie-class2_14.png"></p>
-<h4 id="即可从-http-lt-公网IP-gt-访问简历"><a href="#即可从-http-lt-公网IP-gt-访问简历" class="headerlink" title="即可从 http://&lt;公网IP&gt;/ 访问简历~"></a>即可从 http://&lt;公网IP&gt;/ 访问简历~</h4>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/0806_aliyun-ecs-newbie-class2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -477,7 +407,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020/8/6 18:39" itemprop="dateModified" datetime="2020-08-06T18:39:19+08:00">2020/8/6</time>
+                <time title="修改时间：2020/8/7 00:21" itemprop="dateModified" datetime="2020-08-07T00:21:20+08:00">2020/8/7</time>
               </span>
 
           
@@ -489,322 +419,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="Command-Line-Shell"><a href="#Command-Line-Shell" class="headerlink" title="Command Line Shell"></a>Command Line Shell</h2><br>
-
-<h4 id="A-Files-and-Directories"><a href="#A-Files-and-Directories" class="headerlink" title="A. Files and Directories"></a>A. Files and Directories</h4><ol>
+          <h2 id="Command-Line-Shell"><a href="#Command-Line-Shell" class="headerlink" title="Command Line Shell"></a>Command Line Shell</h2><h4 id="A-Files-and-Directories"><a href="#A-Files-and-Directories" class="headerlink" title="A. Files and Directories"></a>A. Files and Directories</h4><ol>
 <li><p>new directory: <code>mkdir &#123;mynewdir&#125;</code></p>
 </li>
 <li><p>go to directory: <code>cd &#123;mynewdir&#125;</code></p>
 </li>
 <li><p>show present working directory: <code>pwd</code></p>
 </li>
-<li><p>delete empty directory: <code>rmdir &#123;mynewdir&#125;</code></p>
-</li>
-<li><p>current directory: <code>.</code></p>
-</li>
-<li><p>parent directory: <code>..</code></p>
-</li>
-<li><p>create file: <code>touch &#123;new.txt&#125;</code></p>
-</li>
-<li><p>copy file: <code>cp &#123;../my.txt&#125; &#123;.&#125;</code>, <code>cp &#123;my.txt&#125; &#123;my2.txt&#125;</code></p>
-</li>
-<li><p>move/rename file: <code>mv &#123;my.txt&#125; &#123;empty.txt&#125;</code></p>
-</li>
-<li><p>delete file: <code>rm *</code>, <code>rm *.txt</code>, <code>rm &#123;empty.txt&#125;</code></p>
-</li>
-<li><p>change permissions: <code>chmod &#123;+x&#125; &#123;test.py&#125;</code></p>
-</li>
-<li><p>change owner: chown {user} {filename} <code>chown &#123;user1&#125; &#123;test.py&#125;</code></p>
-</li>
-<li><p>change group: chgrp {group} {filename} <code>chgrp &#123;user1&#125; &#123;test.py&#125;</code></p>
-</li>
-<li><p>list entires in directory: <code>ls</code>, <code>ls &#123;mynewdir&#125;</code></p>
-<p><em>Add arguments (can join multiple, e.g. <code>-la</code> ):</em></p>
-<ul>
-<li>list all (inc. hidden) files <code>-a</code></li>
-<li>list directory entries only <code>-d</code></li>
-<li>human-readable format <code>-h</code></li>
-<li>print index number <code>-i</code></li>
-<li>long listing format <code>-l</code></li>
-<li>sort in reverse order <code>-r</code></li>
-<li>print size <code>-s</code></li>
-<li>sort by size <code>-S</code></li>
-<li>sort by modification time <code>-t</code></li>
-<li>list entries by lines <code>-x</code></li>
-<li>sort alphabetically by extension <code>-X</code></li>
-</ul>
-<blockquote>
-<p> {permission} {no. of inodes} {owner} {group} {size} {date of mod} {filename} </p>
-<p>-rwxrwxrwx 1 user1 user1  107 Jul 29 22:01  test.py</p>
-</blockquote>
-</li>
 </ol>
-<br>
-
-<h4 id="B-File-Operations"><a href="#B-File-Operations" class="headerlink" title="B. File Operations"></a>B. File Operations</h4><ol>
-<li><p>show content in std output: <code>cat &#123;new.txt&#125;</code></p>
-</li>
-<li><p>write file: nano/vim etc. {filename} <code>nano &#123;new.txt&#125;</code></p>
-</li>
-<li><p>count no. of characters, words, lines: <code>wc &#123;new.txt&#125;</code></p>
-</li>
-<li><p>text type: <code>file &#123;test.py&#125;</code></p>
-<blockquote>
-<p>test.py: ASCII text, with no line terminators</p>
-</blockquote>
-</li>
-<li><p>print first 10 lines: <code>head &#123;new.txt&#125;</code></p>
-</li>
-<li><p>print last 10 lines: <code>tail &#123;new.txt&#125;</code></p>
-</li>
-<li><p>translate: <code>tr &#123;&#39; &#39;&#125; &#123;&#39;\n&#39;&#125;</code></p>
-</li>
-<li><p>sort: <code>sort</code> (alphabetically), <code>sort &#123;-nr&#125;</code> (numerically reversed)</p>
-</li>
-<li><p>terminal paging program (scroll through contents): <code>less</code> (quit with <code>q</code>)</p>
-</li>
-<li><p>Extract parts each line (by separator after <code>-d</code>) and print the field (of no. after <code>-f</code>): <code>cut -d&#123;&#39; &#39;&#125;, -f&#123;1-&#125; &#123;new.txt&#125;</code> (field counts from 1) (1-: from 1 onwards)</p>
-</li>
-</ol>
-<br>
-
-<h4 id="C-Additional-Commands"><a href="#C-Additional-Commands" class="headerlink" title="C. Additional Commands"></a>C. Additional Commands</h4><ol>
-<li>show manual of a command: <code>man &#123;echo&#125;</code> (quit with <code>q</code>)</li>
-<li>print to std output: <code>echo &#123;Hello&#125;</code>, <code>echo &#123;&quot;Hello&quot;&#125;</code></li>
-<li>globally search for regular expression and print out: <code>grep &#123;true&#125;</code></li>
-<li>current date: <code>date</code></li>
-<li>list of logged in users: <code>who</code></li>
-<li>computer running duration: <code>uptime</code></li>
-<li>unused memory: <code>free</code></li>
-</ol>
-<br>
-
-<h4 id="D-Redirect-I-O-Streams"><a href="#D-Redirect-I-O-Streams" class="headerlink" title="D. Redirect I/O Streams"></a>D. Redirect I/O Streams</h4><ol>
-<li><p>redirect std output to new file or overwrite: <code>&gt;</code> </p>
-<ul>
-<li><code>&#123;./hello.py&#125; &gt; &#123;hello.txt&#125;</code>, <code>&#123;python hello.py&#125; &gt; &#123;hello.txt&#125;</code></li>
-</ul>
-</li>
-<li><p>redirect std output to new file or append: <code>&gt;&gt;</code> </p>
-<ul>
-<li><code>&#123;./hello.py&#125; &gt; &#123;hello.txt&#125;</code></li>
-</ul>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#hello.py</span></span><br><span class="line">print(<span class="string">&quot;Hello world to STDOUT&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>//hello.txt</p>
-<p>Hello world to STDOUT</p>
-</blockquote>
-<ol start="3">
-<li><p>redirect std input from file: <code>&lt;</code></p>
-<ul>
-<li><p><code>&#123;./hello.py&#125; &lt; &#123;hello.txt&#125;</code></p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">//</span>hello.txt</span><br><span class="line">Hello prepared input <span class="keyword">in</span> hello.txt</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#hello.py</span></span><br><span class="line">data = input(<span class="string">&quot;Get from STDIN: &quot;</span>)</span><br><span class="line">print(<span class="string">&quot;Write to STDOUT: &quot;</span> + data)</span><br><span class="line"><span class="keyword">raise</span> ValueError(<span class="string">&quot;Generate STDERR...&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Get from STDIN: Write to STDOUT: Hello prepared input in hello.txt<br>Traceback (most recent call last):<br>File “in.py”, line 3, in <module><br>raise ValueError(“Generating error to STDERR…”)<br>ValueError: Generate STDERR…</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>redirect std input and output</p>
-<ul>
-<li><p><code>&#123;./hello.py&#125; &lt; &#123;hello.txt&#125; &gt; &#123;out.txt&#125;</code></p>
-<blockquote>
-<p>//terminal, out.txt</p>
-<p>Get from STDIN: Write to STDOUT: Hello prepared input in hello.txt</p>
-</blockquote>
-</li>
-<li><p><code>&#123;./hello.py&#125; &lt; &#123;hello.txt&#125; 2&gt; &#123;err.txt&#125;</code> (0 STDIN, 1 STDOUT, 2 STDERR)</p>
-<blockquote>
-<p>Get from STDIN: Write to STDOUT: Hello prepared input in hello.txt</p>
-</blockquote>
-<blockquote>
-<p>//err.txt</p>
-<p>Traceback (most recent call last):<br>  File “in.py”, line 3, in <module></p>
-<pre><code>raise ValueError(&quot;Generate STDERR...&quot;)</code></pre>
-<p>ValueError: Generate STDERR…</p>
-</blockquote>
-</li>
-</ul>
-</li>
-<li><p>echo to file</p>
-<ul>
-<li><code>echo &#123;&quot;Something to write&quot;&#125; &gt; &#123;write.txt&#125;</code></li>
-</ul>
-</li>
-</ol>
-<br>
-
-<h4 id="E-Pipes-and-Pipelines"><a href="#E-Pipes-and-Pipelines" class="headerlink" title="E. Pipes and Pipelines"></a>E. Pipes and Pipelines</h4><ol>
-<li><p>Piping within bash (from stdout to stdin)</p>
-<ul>
-<li><code>cat spider.txt | tr &#39; &#39; &#39;\n&#39; | sort | uniq -c | sort -nr | head</code></li>
-</ul>
-</li>
-<li><p>Piping with external programs</p>
-<ul>
-<li><p><code>cat passage.txt | ./capitalize.py</code></p>
-<figure class="highlight ceylon"><table><tr><td class="code"><pre><span class="line"><span class="comment">//passage.txt</span></span><br><span class="line">here <span class="keyword">is</span> my passage,</span><br><span class="line">it contains <span class="keyword">small</span> letters only.</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#capitalize.py</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> sys.stdin:</span><br><span class="line">    print(line.strip().capitalize())    <span class="comment">#strip() removes &#x27;\n&#x27; in STDIN</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Here is my passage,<br>It contains small letters only.</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-<br>
-
-<h4 id="F-Signals"><a href="#F-Signals" class="headerlink" title="F. Signals"></a>F. Signals</h4><ul>
-<li><code>ping www.example.com</code></li>
-</ul>
-<ol>
-<li><p>SIGINT: <code>Ctrl+C</code> (prints summary of process and results, then interrupt cleanly)</p>
-<blockquote>
-<p>^C</p>
-<p>— <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a> ping statistics —</p>
-<p>4 packets transmitted, 4 received, 0% packet loss, time 3003ms</p>
-<p>rtt min/avg/max/mdev = 162.498/166.949/169.256/2.665 ms</p>
-</blockquote>
-</li>
-<li><p>SIGSTOP: <code>Ctrl+Z</code> (stop without terminating)</p>
-<blockquote>
-<p>^Z<br>[1]+  Stopped                 ping <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a></p>
-</blockquote>
-</li>
-<li><p>SIGTERM: <code>kill</code> (runs a program to terminate thread in another terminal)</p>
-<ul>
-<li><p><code>kill &#123;179&#125;</code> (PID number)</p>
-<blockquote>
-<p>Terminated</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ol>
-<br>
-
-<h4 id="G-Processes"><a href="#G-Processes" class="headerlink" title="G. Processes"></a>G. Processes</h4><ol>
-<li><p>list currently running processes: <code>ps</code></p>
-<ul>
-<li><p>in current terminal for current user <code>ps</code></p>
-</li>
-<li><p>for all users <code>ps ax</code></p>
-<blockquote>
-<p>PID TTY      STAT   TIME COMMAND</p>
-<p>179 tty3     S           0:00 ping <a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a></p>
-<p>180 tty4     Ss         0:00 /init</p>
-<p>181 tty4     S           0:00 -bash</p>
-</blockquote>
-</li>
-<li><p>show environment (variables) <code>ps e</code></p>
-</li>
-</ul>
-</li>
-<li><p>continue process after SIGSTOP: <code>fg</code></p>
-</li>
-<li><p>make stopped job to background: <code>bg</code></p>
-</li>
-<li><p>list currently running or stopped jobs: <code>jobs</code></p>
-</li>
-<li><p>show processes using the most CPU time: <code>top</code> (quit with <code>q</code>)</p>
-</li>
-</ol>
-<br>
-<br>
-
-<h2 id="More-Bash-Scripting"><a href="#More-Bash-Scripting" class="headerlink" title="More Bash Scripting"></a>More Bash Scripting</h2><br>
-
-<h4 id="A-Bash-Script-File"><a href="#A-Bash-Script-File" class="headerlink" title="A. Bash Script File"></a>A. Bash Script File</h4><p>Put all commands in a .sh script (separate commands by new line or <code>;</code>)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Current date and time: <span class="subst">$(date)</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span>    <span class="comment">#echo new line</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Memory condition: &quot;</span>; free; <span class="built_in">echo</span></span><br><span class="line">myvar=<span class="string">&quot;hello&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$myvar</span></span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h4 id="B-Variables"><a href="#B-Variables" class="headerlink" title="B. Variables"></a>B. Variables</h4><p>Define (local) environment variables:</p>
-<ul>
-<li><p><code>example=hello</code>, <code>example=&#39;hello&#39;</code>, <code>example=&quot;hello&quot;</code> (no space)</p>
-<p>  <code>echo $example</code></p>
-<blockquote>
-<p>hello</p>
-</blockquote>
-</li>
-</ul>
-<br>
-
-<h4 id="C-Globs"><a href="#C-Globs" class="headerlink" title="C. Globs"></a>C. Globs</h4><ol>
-<li><p>any amount of characters: <code>*</code></p>
-<ul>
-<li>list all .py entries <code>echo *.py</code></li>
-<li>list all entries starting with letter “c” <code>echo c*</code></li>
-</ul>
-</li>
-<li><p>exactly one character: <code>?</code></p>
-<ul>
-<li>list all files named with 3 characters <code>echo ???.*</code></li>
-</ul>
-</li>
-</ol>
-<br>
-
-<h4 id="D-Conditionals"><a href="#D-Conditionals" class="headerlink" title="D. Conditionals"></a>D. Conditionals</h4><ol>
-<li><p>result based on exit status: <code>0</code> for true, non-zero for false</p>
-</li>
-<li><p>if-then-else-fi</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> grep <span class="string">&quot;127.0.0.1&quot;</span> /etc/hosts; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;OK, address found.&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Error, address not found.&quot;</span></span><br><span class="line"><span class="keyword">fi</span>    <span class="comment">#end conditional block</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>express conditions: <code>test</code>, <code>[  ]</code></p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">test</span> -n <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span>; <span class="keyword">then</span>    <span class="comment">#or</span></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">&quot;<span class="variable">$PATH</span>&quot;</span> ]; <span class="keyword">then</span>    <span class="comment">#must have space after &#x27;[&#x27; and before &#x27;]&#x27;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Your path is not empty.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<br>
-
-<h4 id="E-Loops"><a href="#E-Loops" class="headerlink" title="E. Loops"></a>E. Loops</h4><ol>
-<li><p>while-do-done: <code>test</code>, <code>[  ]</code></p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">n=1</span><br><span class="line"><span class="keyword">while</span> [ <span class="variable">$n</span> -le 5 ]; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Iterating: <span class="variable">$n</span>&quot;</span></span><br><span class="line">    ((n+=1))    <span class="comment">#double parentheses: arithmetic operations in bash</span></span><br><span class="line"><span class="keyword">done</span>    <span class="comment">#end loop block</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>while loop with argv from python</p>
-<ul>
-<li><p>retry running a python script until it returns 0: <code>./retry.sh ./random-exit.py</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#random-exit.py</span></span><br><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line">value=random.randint(<span class="number">0</span>,<span class="number">3</span>)</span><br><span class="line">print(<span class="string">&quot;Returning: &quot;</span> + str(value))</span><br><span class="line">sys.exit(value)    <span class="comment">#simulate program exit status, ok(0) or error(1-3)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#retry.sh</span></span><br><span class="line">n=0</span><br><span class="line"><span class="built_in">command</span>=<span class="variable">$1</span>    <span class="comment">#first command line argument, i.e. sys.argv[1]</span></span><br><span class="line"><span class="keyword">while</span> ! <span class="variable">$command</span> &amp;&amp; [ <span class="variable">$n</span> -le 5 ]; <span class="keyword">do</span>    <span class="comment">#retry until random-exit.py returns ok(0), at most retry 5 times</span></span><br><span class="line">    sleep <span class="variable">$n</span>    <span class="comment">#simulate after program error, wait for some time before retrying</span></span><br><span class="line">    ((n=n+1))</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Retry #<span class="variable">$n</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>for-do-done</p>
- <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> fruit <span class="keyword">in</span> peach orange apple; <span class="keyword">do</span>    <span class="comment">#separate iterating items with space</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;I like <span class="variable">$fruit</span>!&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>loop with globs and other bash commands</p>
-<ul>
-<li><p>rename all .HTM files to .html files</p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> *.HTM; <span class="keyword">do</span></span><br><span class="line">    name=$(basename <span class="string">&quot;<span class="variable">$file</span>&quot;</span> .HTM)    <span class="comment">#bash command &quot;basename &#123;filename&#125;         &#123;extension&#125;&quot; to return raw filename</span></span><br><span class="line">    mv <span class="string">&quot;<span class="variable">$file</span>&quot;</span> <span class="string">&quot;<span class="variable">$name</span>.html&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-<p>  <em>To make sure the program is alright before actually modifying system documents:</em></p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> mv <span class="string">&quot;<span class="variable">$file</span>&quot;</span> <span class="string">&quot;<span class="variable">$name</span>.html&quot;</span></span><br><span class="line"><span class="comment">#print but do not execute expected action</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>pipe to sort and analyze the most repeated log items</p>
-  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> logfile <span class="keyword">in</span> /var/<span class="built_in">log</span>/*<span class="built_in">log</span>; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Processing: <span class="variable">$logfile</span>&quot;</span></span><br><span class="line">    cut -d<span class="string">&#x27; &#x27;</span> -f5- <span class="variable">$logfile</span> | sort | uniq -c | sort -nr | head -5</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ol>
-<br>
-<br>
-
-<p><em>Reference:</em></p>
-<ol>
-<li>Coursera - <strong>Using Python to Interact with the Operating System</strong> by Google, Week 6 Bash Scripting</li>
-</ol>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/0730_bash-basics/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -867,7 +497,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">tracytangyc</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
         
@@ -885,7 +515,7 @@
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
 
