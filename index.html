@@ -316,7 +316,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/8 00:38" itemprop="dateModified" ="2020-08-08T00:38:05+08:00">2020/8/8</time>
+                <time title="修改时间：2020/8/8 00:53" itemprop="dateModified" ="2020-08-08T00:53:48+08:00">2020/8/8</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -337,45 +337,19 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="如何使用koa以及koa中间件"><a href="#如何使用koa以及koa中间件" class="headerlink" title="如何使用koa以及koa中间件"></a>如何使用koa以及koa中间件</h1><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p>新建一个<strong>KOA迁移应用方案</strong>Web应用<br><img src="../../images/2020/0806_aliyun-serverless-day4_1.png"></p>
+          <h1 id="如何使用koa以及koa中间件"><a href="#如何使用koa以及koa中间件" class="headerlink" title="如何使用koa以及koa中间件"></a>如何使用koa以及koa中间件</h1><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p>新建一个<strong>KOA迁移应用方案</strong>Web应用</p>
 <p>在云开发案例中，<code>app.js</code>作为主应用入口文件时，需要有这样一行代码，用于暴露入口模块</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = app;</span><br></pre></td></tr></table></figure>
 
 <p>修改router.get根目录的函数</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">router.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">  ctx.body = <span class="string">&#x27;&lt;h1&gt;Hi Serverless, &#123;我的名字&#125;&lt;h1&gt;&#x27;</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>和本地一样，使用<code>node app.js</code>运行，按 <strong>预览</strong> &gt; 输入端口号 &gt; 确定<br><img src="../../images/2020/0806_aliyun-serverless-day4_2.png"></p>
-<p>就可以访问啦~<br><img src="../../images/2020/0806_aliyun-serverless-day4_3.png"></p>
-<br>
-
-<h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><h4 id="1-什么是koa？"><a href="#1-什么是koa？" class="headerlink" title="1. 什么是koa？"></a>1. 什么是koa？</h4><ul>
-<li>基于可扩展模型，HTTP协议的Web (Node.js)框架</li>
-<li>基于经典的洋葱模型【“中间件”概念】</li>
-<li>内核简单</li>
-</ul>
-<br>
-
-<h4 id="2-本地示例"><a href="#2-本地示例" class="headerlink" title="2. 本地示例"></a>2. 本地示例</h4><p>新建项目后，安装koa依赖到本地</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i koa</span><br></pre></td></tr></table></figure>
-
-<p>测试经典hello world项目</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> koa = <span class="built_in">require</span>(<span class="string">&#x27;koa&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> koa();</span><br><span class="line"></span><br><span class="line">app.use(<span class="keyword">async</span> ctx =&gt; &#123;    <span class="comment">//ctx -&gt; 获取response</span></span><br><span class="line">  ctx.body = <span class="string">&#x27;Hello World&#x27;</span>;        <span class="comment">//response.body</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>);</span><br></pre></td></tr></table></figure>
-
-<p>koa Context用于封装node的request和response，使项目采用中间件(middleware)的开发方法，更加方便。每一个request将产生一个Context，以ctx标识（即中间件的接收方） <a target="_blank" rel="noopener" href="https://koajs.com/#context">&gt;&gt;更多</a></p>
-<br>
-
-<h4 id="3-koa的基础使用"><a href="#3-koa的基础使用" class="headerlink" title="3. koa的基础使用"></a>3. koa的基础使用</h4><p>koa的中间件和依赖可以到<a target="_blank" rel="noopener" href="https://github.com/koajs">GitHub</a>上查看。<br>koa采用路由(router)请求同一个端口的不同路径，先安装router中间件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i @koa/router</span><br></pre></td></tr></table></figure>
-
-<p>测试以下代码</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> koa = <span class="built_in">require</span>(<span class="string">&#x27;koa&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> Router = <span class="built_in">require</span>(<span class="string">&#x27;@koa/router&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> koa();</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router();</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;router: /&#x27;</span>);</span><br><span class="line">    ctx.body = <span class="string">&#x27;Hi serverless&#x27;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">&#x27;/api/&#x27;</span>, <span class="function">(<span class="params">ctx</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;router: /api&#x27;</span>);</span><br><span class="line">    ctx.body = <span class="string">&#x27;Hi API&#x27;</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">app.use(router.routes());</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">3000</span>, <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;visit http://localhost:3000&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-<p><img src="../../images/2020/0806_aliyun-serverless-day4_4.png"></p>
-<p>两个路径都能正常request和response。</p>
-<br>
-
-<h4 id="4-中间件"><a href="#4-中间件" class="headerlink" title="4. 中间件"></a>4. 中间件</h4><p>概念：约定大于配置</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;function  one&#x27;</span>;</span><br><span class="line">    next();    <span class="comment">//约定调用下一个函数</span></span><br><span class="line">&#125;)</span><br><span class="line">app.use(<span class="function">(<span class="params">ctx, next</span>) =&gt;</span> &#123;</span><br><span class="line">    ctx.body = <span class="string">&#x27;function two&#x27;</span>;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/0806_aliyun-serverless-day4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
