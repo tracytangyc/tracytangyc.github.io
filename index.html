@@ -231,7 +231,7 @@
               <span class="post-meta-item-text">发表</span>
               
 
-              <time title="创建时间：2020/8/8 17:54 / 修改时间：20:33" itemprop="dateCreated datePublished" datetime="2020-08-08T17:54:11+08:00">2020/8/8</time>
+              <time title="创建时间：2020/8/8 17:54 / 修改时间：20:47" itemprop="dateCreated datePublished" datetime="2020-08-08T17:54:11+08:00">2020/8/8</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,81 +252,23 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="云端搭建Linux学习环境"><a href="#云端搭建Linux学习环境" class="headerlink" title="云端搭建Linux学习环境"></a>云端搭建Linux学习环境</h1><h2 id="1-为Linux环境安装图形化桌面-Gnome"><a href="#1-为Linux环境安装图形化桌面-Gnome" class="headerlink" title="1. 为Linux环境安装图形化桌面(Gnome)"></a>1. 为Linux环境安装图形化桌面(Gnome)</h2><h4 id="云服务器：Gnome-VNC"><a href="#云服务器：Gnome-VNC" class="headerlink" title="云服务器：Gnome + VNC"></a>云服务器：Gnome + VNC</h4><p>由于之前安装了Ubuntu镜像，将继续使用这个系统。</p>
+          <h1 id="云端搭建Linux学习环境"><a href="#云端搭建Linux学习环境" class="headerlink" title="云端搭建Linux学习环境"></a>云端搭建Linux学习环境</h1><h2 id="1-为Linux环境安装图形化桌面-Gnome"><a href="#1-为Linux环境安装图形化桌面-Gnome" class="headerlink" title="1. 为Linux环境安装图形化桌面(Gnome)"></a>1. 为Linux环境安装图形化桌面(Gnome)</h2><h4 id="云服务器：Gnome-VNC"><a href="#云服务器：Gnome-VNC" class="headerlink" title="云服务器：Gnome + VNC"></a>云服务器：Gnome + VNC</h4><p>在CentOS上，可以直接安装Gnome+VNC一键包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum update &amp;&amp; yum install wqy-microhei-fonts</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://gist.githubusercontent.com/ivmm/d93138038edbd551def09205bb61ae11/raw/8ed82411926acb3ab331d293f6200447ad2c85cf/gnome_install.sh &amp;&amp; bash gnome_install.sh</span><br></pre></td></tr></table></figure>
+
+<p>输入密码即完成配置。<br><img src="../../images/2020/0808_aliyun-ecs-newbie-class4_1.png"></p>
+<p>由于我之前安装了Ubuntu镜像，所以将继续使用这个系统。操作如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
 
 <p>安装TigerVNC</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install xserver-xorg-core</span><br><span class="line">sudo apt install tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer</span><br></pre></td></tr></table></figure>
-
-<p>安装并启动Gnome</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install ubuntu-gnome-desktop</span><br><span class="line">sudo systemctl start gdm</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> gdm</span><br></pre></td></tr></table></figure>
-
-<p>设置VNC密码，并选择密码是否只读（无法进行鼠标键盘交互）,一般选择否<code>n</code>即可</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vncpassword</span><br></pre></td></tr></table></figure>
-
-<p>设置VNC启动配置，新建一个<code>xstartup</code>文档</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano ~/.vnc/xstartup</span><br></pre></td></tr></table></figure>
-
-<p>写入以下内容</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh </span></span><br><span class="line">[ -x /etc/vnc/xstartup ] &amp;&amp; <span class="built_in">exec</span> /etc/vnc/xstartup</span><br><span class="line">[ -r <span class="variable">$HOME</span>/.Xresources ] &amp;&amp; xrdb <span class="variable">$HOME</span>/.Xresources</span><br><span class="line">vncconfig -iconic &amp;</span><br><span class="line">dbus-launch --<span class="built_in">exit</span>-with-session gnome-session &amp;</span><br></pre></td></tr></table></figure>
-
-<p>完成后就可以开启VNC服务端，GUI解析度可以自由调整</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod a+x ~/.vnc/xstartup</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vncserver -localhost no -geometry 1440x810 -depth 24</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h4 id="本地：VNC客户端"><a href="#本地：VNC客户端" class="headerlink" title="本地：VNC客户端"></a>本地：VNC客户端</h4><p>为了查看远程GUI桌面，我们需要使用虚拟网络计算VNC (Virtual Network Computing) 工具。</p>
-<blockquote>
-<p>VNC是一款由AT&amp;T实验室所开发的可操控远程计算机的软件</p>
-</blockquote>
-<p>在本地电脑上下载<a target="_blank" rel="noopener" href="https://www.tightvnc.com/download.php">TightVNC客户端</a>，以透过SSH完成VNC连接</p>
-<p>在PuTTY设置SSH Tunnel，端口号<code>5901</code>，<strong>Destination</strong> <code>&lt;公网IP&gt;:5901</code>，选择<strong>Add</strong>，回到<strong>session</strong>页面打开<br><img src="../../images/2020/0808_aliyun-ecs-newbie-class4_1.png"></p>
-<p>打开后输入<code>&lt;公网IP&gt;:5901</code>，输入刚才设置的VNC密码<br><img src="../../images/2020/0808_aliyun-ecs-newbie-class4_2.png"></p>
-<p>就可以看到远程Linux图形界面了~<br><img src="../../images/2020/0808_aliyun-ecs-newbie-class4_3.png"><br><img src="../../images/2020/0808_aliyun-ecs-newbie-class4_4.png"></p>
-<br>
-
-<h2 id="2-学习Linux的基本操作"><a href="#2-学习Linux的基本操作" class="headerlink" title="2. 学习Linux的基本操作"></a>2. 学习Linux的基本操作</h2><p>(CentOS适用)</p>
-<h4 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h4><ul>
-<li>系统与内核 <code>cat /etc/redhat-release</code>、<code>uname -r</code></li>
-<li>CPU <code>grep &quot;CPU&quot; /proc/cpuinfo</code></li>
-<li>运行时间（ubuntu同）<code>uptime</code></li>
-<li>系统位数 <code>getconf LONG_BIT</code></li>
-<li>硬盘与分区 <code>df -h</code></li>
-</ul>
-<h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4><ul>
-<li>软件装卸（ubuntu下<code>yum</code>换为<code>apt</code>）<ul>
-<li>更新系统 <code>yum update</code>（ubuntu下另需<code>apt upgrade</code>）</li>
-<li>更新软件源缓存 <code>yum makecache</code></li>
-<li>搜索软件 <code>yum search &lt;software-name&gt;</code></li>
-<li>安装软件 <code>yum install &lt;software-name&gt;</code></li>
-<li>卸载软件 <code>yum remove &lt;软件名&gt;</code>（ubuntu下<code>autoremove</code>）</li>
-</ul>
-</li>
-<li>软件管理（ubuntu同）<ul>
-<li>启动 <code>service &lt;software-name&gt; start</code></li>
-<li>重启 <code>service &lt;software-name&gt; restart</code></li>
-<li>关闭 <code>service &lt;software-name&gt; stop</code></li>
-<li>查看状态 <code>service &lt;software-name&gt; status</code></li>
-</ul>
-</li>
-</ul>
-<h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><ul>
-<li>文件管理（Linux通用）<ul>
-<li>创建文件 <code>touch &lt;file&gt;</code></li>
-<li>创建目录 <code>mkdir &lt;directory&gt;</code></li>
-<li>复制 <code>cp &lt;file/dir&gt;</code></li>
-<li>移动或重命名 <code>mv &lt;file/dir&gt;</code></li>
-<li>修改权限 <code>chmod +??? &lt;file/dir&gt;</code></li>
-<li>删除文件 <code>rm &lt;file&gt;</code></li>
-<li>删除目录及其下文件 <code>rm -rf &lt;directory&gt;</code></li>
-</ul>
-</li>
-<li>文件下载 <code>wget http://&lt;address&gt;</code></li>
-<li>文件压缩 <code>tar zcvf &lt;compression&gt;.tar.gz</code></li>
-<li>文件解压 <code>tar zxvf &lt;compression&gt;.tar.gz</code></li>
-</ul>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/0808_aliyun-ecs-newbie-class4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -378,7 +320,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/8 15:15" itemprop="dateModified" ="2020-08-08T15:15:47+08:00">2020/8/8</time>
+                <time title="修改时间：2020/8/8 20:37" itemprop="dateModified" ="2020-08-08T20:37:27+08:00">2020/8/8</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
