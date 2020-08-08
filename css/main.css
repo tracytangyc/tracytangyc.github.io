@@ -17,7 +17,7 @@
   --btn-default-hover-bg: #222;
   --btn-default-hover-color: #fff;
   --btn-default-hover-border-color: #222;
-  --highlight-background: #f0f0f0;
+  --highlight-background: #f6f6f6;
   --highlight-foreground: #444;
   --highlight-gutter-background: #dedede;
   --highlight-gutter-foreground: #555;
@@ -470,11 +470,10 @@ pre {
 }
 .highlight,
 pre {
-  box-shadow: 0 0 3px 1px rgba(0,0,0,0.1);
+  box-shadow: 0 0 5px 0px rgba(0,0,0,0.25);
   line-height: 1.6;
   margin: 0 auto 20px;
   padding: 0 5px;
-  border-radius: 5px;
 }
 pre,
 code {
@@ -482,7 +481,7 @@ code {
   box-shadow: none;
 }
 code {
-  border-radius: 3px;
+  border-radius: 5px;
   font-size: 0.85em;
   font-weight: 540;
   padding: 3px 5px;
@@ -499,6 +498,7 @@ kbd {
 }
 .highlight {
   position: relative;
+  border-radius: 5px;
 }
 .highlight pre {
   border: 0;
@@ -1427,7 +1427,7 @@ pre code {
   display: block;
 }
 .sidebar-nav li {
-  border-bottom: 0px solid transparent;
+  border-bottom: 1px solid transparent;
   color: var(--text-color);
   cursor: pointer;
   display: inline-block;
@@ -1517,7 +1517,7 @@ pre code {
 .post-toc ol {
   list-style: none;
   margin: 0;
-  padding: 0 2px 5px 10px;
+  padding: 0 2px 5px 15px;
   text-align: left;
 }
 .post-toc ol > ol {
@@ -1983,6 +1983,7 @@ pre code {
 .post-body video,
 .post-body embed {
   margin-bottom: 20px;
+  box-shadow: 0 0 4px 0px rgba(0,0,0,0.3);
 }
 .post-body .video-container {
   height: 0;
@@ -2021,6 +2022,12 @@ pre code {
   height: 100%;
   object-fit: cover;
   width: 100%;
+}
+@media (max-width: 991px) {
+  .posts-expand .post-block {
+    border-radius: 0px;
+    margin-top: 0;
+  }
 }
 .posts-expand .post-header {
   font-size: 0.95em;
@@ -2239,11 +2246,16 @@ pre code {
 }
 .post-copyright {
   background: var(--card-bg-color);
-  border-left: 3px solid #f42433;
+  border-left: 3px solid rgba(244,36,51,0.7);
   list-style: none;
-  margin: 2em 0 0;
+  margin: 5em 0 0;
   padding: 0.5em 1em;
   font-size: 0.85em;
+  line-height: 1.5;
+  color: rgba(102,102,102,0.8);
+}
+.post-copyright a {
+  color: rgba(102,102,102,0.8);
 }
 .category-all-page .category-all-title {
   text-align: center;
@@ -2470,6 +2482,19 @@ ul.breadcrumb li + li:last-child {
   align-self: stretch;
   margin: 2em 1em;
 }
+@media (max-width: 991px) {
+  .header {
+    margin: 0;
+  }
+  .header .site-meta {
+    padding: 0;
+  }
+  .header .site-meta,
+  .header a,
+  .header .site-title {
+    font-size: 1.05em;
+  }
+}
 .header-inner {
   background: none;
   border-radius: 12px;
@@ -2483,6 +2508,7 @@ ul.breadcrumb li + li:last-child {
   }
 }
 .main {
+  align-content: center;
   align-items: flex-start;
   display: flex;
   justify-content: space-between;
@@ -2517,7 +2543,6 @@ ul.breadcrumb li + li:last-child {
 @media (max-width: 991px) {
   .main-inner {
     border-radius: initial;
-    padding: 20px;
     width: 100%;
   }
 }
@@ -2537,6 +2562,12 @@ ul.breadcrumb li + li:last-child {
 .site-brand-container {
   background: #222;
   box-shadow: 0 0 16px rgba(0,0,0,0.3);
+}
+@media (max-width: 991px) {
+  .site-brand-container {
+    vertical-align: middle;
+    border-radius: 0;
+  }
 }
 .site-meta {
   padding: 20px 0;
@@ -2730,6 +2761,11 @@ ul.breadcrumb li + li:last-child {
   box-shadow: 0 0 16px 0px rgba(0,0,0,0.12);
   margin-top: 12px;
 }
+@media (max-width: 991px) {
+  .post-block {
+    margin: 0.5em 0;
+  }
+}
 .comments {
   background: var(--content-bg-color);
   border-radius: 12px;
@@ -2781,7 +2817,8 @@ ul.breadcrumb li + li:last-child {
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .main-inner {
-    padding: 10px;
+    border-radius: 0px;
+    padding: 0;
   }
   .posts-expand .post-button {
     margin-top: 20px;
@@ -2792,6 +2829,7 @@ ul.breadcrumb li + li:last-child {
     padding: 20px;
   }
   .post-block + .post-block {
+    border-radius: 0px;
     margin-top: 10px;
   }
   .comments {
@@ -2804,7 +2842,8 @@ ul.breadcrumb li + li:last-child {
 }
 @media (max-width: 767px) {
   .main-inner {
-    padding: 8px;
+    border-radius: 0px;
+    padding: 0;
   }
   .posts-expand .post-button {
     margin: 12px 0;
@@ -2815,6 +2854,7 @@ ul.breadcrumb li + li:last-child {
     padding: 12px;
   }
   .post-block + .post-block {
+    border-radius: 0px;
     margin-top: 8px;
   }
   .comments {

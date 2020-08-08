@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tracytangyc.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+  </script>
+
+  <meta name="description" content="数据库与To-do List应用学习笔记新建一个实验室 Midway Serverless OTS数据库示例 应用 安装依赖后运行 npm inpm run dev  没有使用过表格存储(tablestore)的话需要先开通OTS服务并创建实例，进入实例管理。创建一张名叫list的列表，主键为id 在控制台右上方头像处，选择AccessKey管理 创建你的AccessKeyId和AccessKey">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day 5 | 阿里云：云开发校园合伙人创造营">
+<meta property="og:url" content="https://tracytangyc.github.io/2020/0807_aliyun-serverless-day5/index.html">
+<meta property="og:site_name" content="晴仔TRACY">
+<meta property="og:description" content="数据库与To-do List应用学习笔记新建一个实验室 Midway Serverless OTS数据库示例 应用 安装依赖后运行 npm inpm run dev  没有使用过表格存储(tablestore)的话需要先开通OTS服务并创建实例，进入实例管理。创建一张名叫list的列表，主键为id 在控制台右上方头像处，选择AccessKey管理 创建你的AccessKeyId和AccessKey">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tracytangyc.github.io/images/2020/0807_aliyun-serverless-day5_.png">
+<meta property="og:image" content="https://tracytangyc.github.io/images/2020/0807_aliyun-serverless-day5_.png">
+<meta property="og:image" content="https://tracytangyc.github.io/images/2020/0807_aliyun-serverless-day5_.png">
+<meta property="og:image" content="https://tracytangyc.github.io/images/2020/0807_aliyun-serverless-day5_.png">
+<meta property="og:image" content="https://tracytangyc.github.io/images/2020/0807_aliyun-serverless-day5_.png">
+<meta property="og:image" content="https://tracytangyc.github.io/images/2020/0807_aliyun-serverless-day5_.png">
+<meta property="article:published_time" content="2020-08-07T14:51:59.000Z">
+<meta property="article:modified_time" content="2020-08-08T07:15:47.759Z">
+<meta property="article:author" content="tracytangyc">
+<meta property="article:tag" content="阿里云">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tracytangyc.github.io/images/2020/0807_aliyun-serverless-day5_.png">
+
+<link rel="canonical" href="https://tracytangyc.github.io/2020/0807_aliyun-serverless-day5/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Day 5 | 阿里云：云开发校园合伙人创造营 | 晴仔TRACY</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">晴仔TRACY</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点导航
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8ETo-do-List%E5%BA%94%E7%94%A8"><span class="nav-text">数据库与To-do List应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="nav-text">学习笔记</span></a></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">tracytangyc</p>
+  <div class="site-description" itemprop="description">共享知识，共赢快乐</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0807_aliyun-serverless-day5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tracytangyc">
+      <meta itemprop="description" content="共享知识，共赢快乐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晴仔TRACY">
+    </span>
+
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day 5 | 阿里云：云开发校园合伙人创造营
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表</span>
+
+              <time title="创建时间：2020/8/7 22:51" itemprop="dateCreated datePublished" datetime="2020-08-07T22:51:59+08:00">2020/8/7</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新</span>
+                <time title="修改时间：2020/8/8 15:15" itemprop="dateModified" ="2020-08-08T15:15:47+08:00">2020/8/8</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/courses/" itemprop="url" rel="index"><span itemprop="name">courses</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="数据库与To-do-List应用"><a href="#数据库与To-do-List应用" class="headerlink" title="数据库与To-do List应用"></a>数据库与To-do List应用</h1><h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><p>新建一个<strong>实验室</strong> <strong>Midway Serverless OTS数据库示例</strong> 应用<br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+<p>安装依赖后运行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<p>没有使用过表格存储(tablestore)的话需要先开通<a target="_blank" rel="noopener" href="https://cn.aliyun.com/product/ots">OTS服务</a>并创建实例，进入<strong>实例管理</strong>。<br>创建一张名叫<code>list</code>的列表，主键为<code>id</code><br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+<p>在控制台右上方头像处，选择<strong>AccessKey管理</strong><br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+<p>创建你的<code>AccessKeyId</code>和<code>AccessKeySecret</code><br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+<p>在<code>src/apis/config/config.default.ts</code>文件中，我们可以看到应用需要<code>accessKeyId</code>、<code>secretAccessKey</code>、<code>endpoint</code>、<code>instancename</code>四个变量<br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+<p>在<strong>应用配置</strong>中的环境变量中填入刚刚获得的变量即可。（<code>endpoint</code>为实例的<strong>公网</strong>访问地址）<br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+<p>打开网页，to-do list就可以进行添加、完成、删除的操作。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>tracytangyc
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tracytangyc.github.io/2020/0807_aliyun-serverless-day5/" title="Day 5 | 阿里云：云开发校园合伙人创造营">https://tracytangyc.github.io/2020/0807_aliyun-serverless-day5/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本站所有作品除特别声明外，均为站主原创，采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-SA</a> 版权协议进行许可。转载请附上原文出处链接和本声明。
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag"># 阿里云</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/0807_aliyun-ecs-newbie-class3/" rel="prev" title="Class 3 | 阿里云：ECS 7天实践训练营 新人路线">
+      <i class="fa fa-chevron-left"></i> Class 3 | 阿里云：ECS 7天实践训练营 新人路线
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/0808_aliyun-ecs-newbie-class4/" rel="next" title="Class 4 | 阿里云：ECS 7天实践训练营 新人路线">
+      Class 4 | 阿里云：ECS 7天实践训练营 新人路线 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tracytangyc</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -159,7 +159,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -204,6 +204,230 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0808_aliyun-ecs-newbie-class4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tracytangyc">
+      <meta itemprop="description" content="共享知识，共赢快乐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晴仔TRACY">
+    </span>
+
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/0808_aliyun-ecs-newbie-class4/" class="post-title-link" itemprop="url">Class 4 | 阿里云：ECS 7天实践训练营 新人路线</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表</span>
+              
+
+              <time title="创建时间：2020/8/8 17:54 / 修改时间：20:33" itemprop="dateCreated datePublished" datetime="2020-08-08T17:54:11+08:00">2020/8/8</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/courses/" itemprop="url" rel="index"><span itemprop="name">courses</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="云端搭建Linux学习环境"><a href="#云端搭建Linux学习环境" class="headerlink" title="云端搭建Linux学习环境"></a>云端搭建Linux学习环境</h1><h2 id="1-为Linux环境安装图形化桌面-Gnome"><a href="#1-为Linux环境安装图形化桌面-Gnome" class="headerlink" title="1. 为Linux环境安装图形化桌面(Gnome)"></a>1. 为Linux环境安装图形化桌面(Gnome)</h2><h4 id="云服务器：Gnome-VNC"><a href="#云服务器：Gnome-VNC" class="headerlink" title="云服务器：Gnome + VNC"></a>云服务器：Gnome + VNC</h4><p>由于之前安装了Ubuntu镜像，将继续使用这个系统。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
+
+<p>安装TigerVNC</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install xserver-xorg-core</span><br><span class="line">sudo apt install tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer</span><br></pre></td></tr></table></figure>
+
+<p>安装并启动Gnome</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install ubuntu-gnome-desktop</span><br><span class="line">sudo systemctl start gdm</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> gdm</span><br></pre></td></tr></table></figure>
+
+<p>设置VNC密码，并选择密码是否只读（无法进行鼠标键盘交互）,一般选择否<code>n</code>即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vncpassword</span><br></pre></td></tr></table></figure>
+
+<p>设置VNC启动配置，新建一个<code>xstartup</code>文档</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nano ~/.vnc/xstartup</span><br></pre></td></tr></table></figure>
+
+<p>写入以下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh </span></span><br><span class="line">[ -x /etc/vnc/xstartup ] &amp;&amp; <span class="built_in">exec</span> /etc/vnc/xstartup</span><br><span class="line">[ -r <span class="variable">$HOME</span>/.Xresources ] &amp;&amp; xrdb <span class="variable">$HOME</span>/.Xresources</span><br><span class="line">vncconfig -iconic &amp;</span><br><span class="line">dbus-launch --<span class="built_in">exit</span>-with-session gnome-session &amp;</span><br></pre></td></tr></table></figure>
+
+<p>完成后就可以开启VNC服务端，GUI解析度可以自由调整</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod a+x ~/.vnc/xstartup</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vncserver -localhost no -geometry 1440x810 -depth 24</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h4 id="本地：VNC客户端"><a href="#本地：VNC客户端" class="headerlink" title="本地：VNC客户端"></a>本地：VNC客户端</h4><p>为了查看远程GUI桌面，我们需要使用虚拟网络计算VNC (Virtual Network Computing) 工具。</p>
+<blockquote>
+<p>VNC是一款由AT&amp;T实验室所开发的可操控远程计算机的软件</p>
+</blockquote>
+<p>在本地电脑上下载<a target="_blank" rel="noopener" href="https://www.tightvnc.com/download.php">TightVNC客户端</a>，以透过SSH完成VNC连接</p>
+<p>在PuTTY设置SSH Tunnel，端口号<code>5901</code>，<strong>Destination</strong> <code>&lt;公网IP&gt;:5901</code>，选择<strong>Add</strong>，回到<strong>session</strong>页面打开<br><img src="../../images/2020/0808_aliyun-ecs-newbie-class4_1.png"></p>
+<p>打开后输入<code>&lt;公网IP&gt;:5901</code>，输入刚才设置的VNC密码<br><img src="../../images/2020/0808_aliyun-ecs-newbie-class4_2.png"></p>
+<p>就可以看到远程Linux图形界面了~<br><img src="../../images/2020/0808_aliyun-ecs-newbie-class4_3.png"><br><img src="../../images/2020/0808_aliyun-ecs-newbie-class4_4.png"></p>
+<br>
+
+<h2 id="2-学习Linux的基本操作"><a href="#2-学习Linux的基本操作" class="headerlink" title="2. 学习Linux的基本操作"></a>2. 学习Linux的基本操作</h2><p>(CentOS适用)</p>
+<h4 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h4><ul>
+<li>系统与内核 <code>cat /etc/redhat-release</code>、<code>uname -r</code></li>
+<li>CPU <code>grep &quot;CPU&quot; /proc/cpuinfo</code></li>
+<li>运行时间（ubuntu同）<code>uptime</code></li>
+<li>系统位数 <code>getconf LONG_BIT</code></li>
+<li>硬盘与分区 <code>df -h</code></li>
+</ul>
+<h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4><ul>
+<li>软件装卸（ubuntu下<code>yum</code>换为<code>apt</code>）<ul>
+<li>更新系统 <code>yum update</code>（ubuntu下另需<code>apt upgrade</code>）</li>
+<li>更新软件源缓存 <code>yum makecache</code></li>
+<li>搜索软件 <code>yum search &lt;software-name&gt;</code></li>
+<li>安装软件 <code>yum install &lt;software-name&gt;</code></li>
+<li>卸载软件 <code>yum remove &lt;软件名&gt;</code>（ubuntu下<code>autoremove</code>）</li>
+</ul>
+</li>
+<li>软件管理（ubuntu同）<ul>
+<li>启动 <code>service &lt;software-name&gt; start</code></li>
+<li>重启 <code>service &lt;software-name&gt; restart</code></li>
+<li>关闭 <code>service &lt;software-name&gt; stop</code></li>
+<li>查看状态 <code>service &lt;software-name&gt; status</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h4><ul>
+<li>文件管理（Linux通用）<ul>
+<li>创建文件 <code>touch &lt;file&gt;</code></li>
+<li>创建目录 <code>mkdir &lt;directory&gt;</code></li>
+<li>复制 <code>cp &lt;file/dir&gt;</code></li>
+<li>移动或重命名 <code>mv &lt;file/dir&gt;</code></li>
+<li>修改权限 <code>chmod +??? &lt;file/dir&gt;</code></li>
+<li>删除文件 <code>rm &lt;file&gt;</code></li>
+<li>删除目录及其下文件 <code>rm -rf &lt;directory&gt;</code></li>
+</ul>
+</li>
+<li>文件下载 <code>wget http://&lt;address&gt;</code></li>
+<li>文件压缩 <code>tar zcvf &lt;compression&gt;.tar.gz</code></li>
+<li>文件解压 <code>tar zxvf &lt;compression&gt;.tar.gz</code></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0807_aliyun-serverless-day5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="tracytangyc">
+      <meta itemprop="description" content="共享知识，共赢快乐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晴仔TRACY">
+    </span>
+
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/0807_aliyun-serverless-day5/" class="post-title-link" itemprop="url">Day 5 | 阿里云：云开发校园合伙人创造营</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表</span>
+
+              <time title="创建时间：2020/8/7 22:51" itemprop="dateCreated datePublished" datetime="2020-08-07T22:51:59+08:00">2020/8/7</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新</span>
+                <time title="修改时间：2020/8/8 15:15" itemprop="dateModified" ="2020-08-08T15:15:47+08:00">2020/8/8</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/courses/" itemprop="url" rel="index"><span itemprop="name">courses</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数据库与To-do-List应用"><a href="#数据库与To-do-List应用" class="headerlink" title="数据库与To-do List应用"></a>数据库与To-do List应用</h1><h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><p>新建一个<strong>实验室</strong> <strong>Midway Serverless OTS数据库示例</strong> 应用<br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+<p>安装依赖后运行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<p>没有使用过表格存储(tablestore)的话需要先开通<a target="_blank" rel="noopener" href="https://cn.aliyun.com/product/ots">OTS服务</a>并创建实例，进入<strong>实例管理</strong>。<br>创建一张名叫<code>list</code>的列表，主键为<code>id</code><br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+<p>在控制台右上方头像处，选择<strong>AccessKey管理</strong><br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+<p>创建你的<code>AccessKeyId</code>和<code>AccessKeySecret</code><br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+<p>在<code>src/apis/config/config.default.ts</code>文件中，我们可以看到应用需要<code>accessKeyId</code>、<code>secretAccessKey</code>、<code>endpoint</code>、<code>instancename</code>四个变量<br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+<p>在<strong>应用配置</strong>中的环境变量中填入刚刚获得的变量即可。（<code>endpoint</code>为实例的<strong>公网</strong>访问地址）<br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+<p>打开网页，to-do list就可以进行添加、完成、删除的操作。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0807_aliyun-ecs-newbie-class3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -229,10 +453,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表</span>
-              
 
-              <time title="创建时间：2020/8/7 17:55 / 修改时间：20:54" itemprop="dateCreated datePublished" datetime="2020-08-07T17:55:59+08:00">2020/8/7</time>
+              <time title="创建时间：2020/8/7 17:55" itemprop="dateCreated datePublished" datetime="2020-08-07T17:55:59+08:00">2020/8/7</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新</span>
+                <time title="修改时间：2020/8/8 18:15" itemprop="dateModified" ="2020-08-08T18:15:21+08:00">2020/8/8</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -255,8 +485,7 @@
           <h1 id="搭建在线编程环境"><a href="#搭建在线编程环境" class="headerlink" title="搭建在线编程环境"></a>搭建在线编程环境</h1><blockquote>
 <p>第三课链接：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/course/426">打开浏览器就能写代码！打造自己的Web IDE（在线开发环境）</a></p>
 </blockquote>
-<h2 id="1-开通云服务器"><a href="#1-开通云服务器" class="headerlink" title="1. 开通云服务器"></a>1. 开通云服务器</h2><p>见 <a href="https://tracytangyc.github.io/2020/0806_aliyun-ecs-newbie-class2/#1-%E5%BC%80%E9%80%9A%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8">Class 2 | 阿里云：ECS 7天实践训练营 新人路线</a></p>
-<h2 id="2-服务器管理软件"><a href="#2-服务器管理软件" class="headerlink" title="2. 服务器管理软件"></a>2. 服务器管理软件</h2><p>我们已经有了FileZilla和本地的编程IDE（如VSCode)了，此时，为了管理Linux云服务器，需要一款管理终端。推荐使用<a target="_blank" rel="noopener" href="https://github.com/larryli/PuTTY/releases"><strong>PuTTY</strong></a>跨平台Telnet/SSH客户端。</p>
+<h2 id="1-服务器管理软件"><a href="#1-服务器管理软件" class="headerlink" title="1. 服务器管理软件"></a>1. 服务器管理软件</h2><p>我们已经有了FileZilla和本地的编程IDE（如VSCode)了，此时，为了管理Linux云服务器，需要一款管理终端。推荐使用<a target="_blank" rel="noopener" href="https://github.com/larryli/PuTTY/releases"><strong>PuTTY</strong></a>跨平台Telnet/SSH客户端。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/0807_aliyun-ecs-newbie-class3/#more" rel="contents">
@@ -316,7 +545,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/8 00:53" itemprop="dateModified" ="2020-08-08T00:53:48+08:00">2020/8/8</time>
+                <time title="修改时间：2020/8/8 12:20" itemprop="dateModified" ="2020-08-08T12:20:17+08:00">2020/8/8</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -337,7 +566,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="如何使用koa以及koa中间件"><a href="#如何使用koa以及koa中间件" class="headerlink" title="如何使用koa以及koa中间件"></a>如何使用koa以及koa中间件</h1><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p>新建一个<strong>KOA迁移应用方案</strong>Web应用</p>
+          <h1 id="服务端渲染：koa与koa中间件"><a href="#服务端渲染：koa与koa中间件" class="headerlink" title="服务端渲染：koa与koa中间件"></a>服务端渲染：koa与koa中间件</h1><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p>新建一个<strong>KOA迁移应用方案</strong>Web应用</p>
 <p>在云开发案例中，<code>app.js</code>作为主应用入口文件时，需要有这样一行代码，用于暴露入口模块</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = app;</span><br></pre></td></tr></table></figure>
 
@@ -483,7 +712,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/7 18:00" itemprop="dateModified" ="2020-08-07T18:00:40+08:00">2020/8/7</time>
+                <time title="修改时间：2020/8/8 09:34" itemprop="dateModified" ="2020-08-08T09:34:13+08:00">2020/8/8</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
