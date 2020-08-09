@@ -4,7 +4,7 @@
   --card-bg-color: rgba(244,36,51,0.03);
   --text-color: #555;
   --blockquote-color: #666;
-  --blockquote-background-color: #fffcf5;
+  --blockquote-background-color: rgba(255,198,88,0.05);
   --link-color: #555;
   --link-hover-color: #222;
   --brand-color: #fff;
@@ -172,7 +172,7 @@ template {
   display: none;
 }
 ::selection {
-  background: #0066a0;
+  background: #31475e;
   color: #eee;
 }
 html,
@@ -250,15 +250,18 @@ hr {
 }
 blockquote {
   border-left: 4px solid #ffc658;
-  border-radius: 5px 12px 12px 5px;
+  border-radius: 3px 12px 12px 3px;
   color: var(--blockquote-color);
   margin: 0;
-  padding: 0 15px;
+  padding: 0.5em 1em;
   background-color: var(--blockquote-background-color);
 }
 blockquote cite::before {
   content: '-';
   padding: 0 5px;
+}
+blockquote p {
+  margin: 0;
 }
 dt {
   font-weight: bold;
@@ -1147,8 +1150,8 @@ pre code {
   position: relative;
 }
 .headband {
-  background: #222;
-  height: 3px;
+  background: #31475e;
+  height: 4px;
 }
 @media (max-width: 991px) {
   .headband {
@@ -1176,7 +1179,7 @@ pre code {
   display: flex;
   flex-shrink: 0;
   padding: 0 10px;
-  border-radius: 12px;
+  border-radius: 3px;
 }
 .use-motion .header,
 .use-motion .site-brand-container .toggle {
@@ -1212,6 +1215,7 @@ pre code {
   font-family: Lato, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.375em;
   font-weight: normal;
+  text-shadow: 0 0 10px #222;
   margin: 0;
 }
 .site-subtitle {
@@ -1526,8 +1530,14 @@ pre code {
 .post-toc ol > ol {
   padding-left: 0;
 }
-.post-toc ol a {
-  border-bottom: none;
+.post-toc ol a,
+.post-toc ol a.nav-text {
+  border-bottom: 0px solid transparent;
+  transition: all 0.3s ease-in-out;
+}
+.post-toc li a,
+.post-toc li a.nav-text {
+  border-bottom: 0px solid transparent;
   transition: all 0.3s ease-in-out;
 }
 .post-toc .nav-item {
@@ -1835,6 +1845,7 @@ pre code {
 .posts-collapse .collection-header {
   display: block;
   margin-left: 20px;
+  color: #31475e;
 }
 .posts-collapse .collection-header small {
   color: #bbb;
@@ -2250,7 +2261,7 @@ pre code {
 .post-copyright {
   background: var(--card-bg-color);
   border-left: 4px solid rgba(244,36,51,0.7);
-  border-radius: 5px 12px 12px 5px;
+  border-radius: 3px 12px 12px 3px;
   list-style: none;
   margin: 5em 0 0;
   padding: 0.5em 1em;
@@ -2501,7 +2512,7 @@ ul.breadcrumb li + li:last-child {
 }
 .header-inner {
   background: none;
-  border-radius: 12px;
+  border-radius: 3px;
   box-shadow: none;
   width: 240px;
 }
@@ -2538,7 +2549,7 @@ ul.breadcrumb li + li:last-child {
 .main-inner {
   align-self: stretch;
   background: var(--content-bg-color);
-  border-radius: 12px;
+  border-radius: 3px;
   box-shadow: 0 0 16px 0px rgba(0,0,0,0.12);
   box-sizing: border-box;
   padding: 40px;
@@ -2564,7 +2575,7 @@ ul.breadcrumb li + li:last-child {
   }
 }
 .site-brand-container {
-  background: #222;
+  background: #31475e;
   box-shadow: 0 0 16px rgba(0,0,0,0.3);
 }
 @media (max-width: 991px) {
@@ -2687,7 +2698,7 @@ ul.breadcrumb li + li:last-child {
 }
 .sidebar-inner {
   background: var(--content-bg-color);
-  border-radius: 12px;
+  border-radius: 3px;
   box-shadow: 0 0 16px 0px rgba(0,0,0,0.12);
   box-sizing: border-box;
   margin: 30px 0;
@@ -2755,13 +2766,13 @@ ul.breadcrumb li + li:last-child {
 }
 .post-block {
   background: var(--content-bg-color);
-  border-radius: 12px;
+  border-radius: 3px;
   box-shadow: 0 0 16px 0px rgba(0,0,0,0.12);
   padding: 40px;
   margin: 2em 0.6em;
 }
 .post-block + .post-block {
-  border-radius: 12px;
+  border-radius: 3px;
   box-shadow: 0 0 16px 0px rgba(0,0,0,0.12);
   margin-top: 12px;
 }
@@ -2772,7 +2783,7 @@ ul.breadcrumb li + li:last-child {
 }
 .comments {
   background: var(--content-bg-color);
-  border-radius: 12px;
+  border-radius: 3px;
   box-shadow: 0 0 16px 0px rgba(0,0,0,0.12);
   margin-top: 12px;
   padding: 40px;
@@ -2788,7 +2799,7 @@ ul.breadcrumb li + li:last-child {
 }
 .pagination {
   background: var(--content-bg-color);
-  border-radius: 12px;
+  border-radius: 3px;
   border-top: initial;
   box-shadow: 0 0 16px 0px rgba(0,0,0,0.12);
   margin: 12px 0 0;
@@ -2820,7 +2831,8 @@ ul.breadcrumb li + li:last-child {
   font-weight: normal;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
+  padding: 5px 0 5px 0;
+  margin: 20px 100px 20px 100px;
 }
 .post-body h3 {
   border-bottom: 1px dotted #f8f8f8;
@@ -2834,7 +2846,7 @@ ul.breadcrumb li + li:last-child {
     margin-top: 20px;
   }
   .post-block {
-    border-radius: 12px;
+    border-radius: 3px;
     box-shadow: 0 0 16px 0px rgba(0,0,0,0.12);
     padding: 20px;
   }
@@ -2859,7 +2871,7 @@ ul.breadcrumb li + li:last-child {
     margin: 12px 0;
   }
   .post-block {
-    border-radius: 12px;
+    border-radius: 3px;
     box-shadow: 0 0 16px 0px rgba(0,0,0,0.12);
     padding: 12px;
   }
