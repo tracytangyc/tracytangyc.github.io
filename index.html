@@ -237,7 +237,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/9 10:08" itemprop="dateModified" ="2020-08-09T10:08:41+08:00">2020/8/9</time>
+                <time title="修改时间：2020/8/9 20:31" itemprop="dateModified" ="2020-08-09T20:31:03+08:00">2020/8/9</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -258,13 +258,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1>云端搭建Linux学习环境</h1>
+          <h1 id="云端搭建Linux学习环境"><a href="#云端搭建Linux学习环境" class="headerlink" title="云端搭建Linux学习环境"></a>云端搭建Linux学习环境</h1><h2 id="1-为Linux环境安装图形化桌面-Gnome"><a href="#1-为Linux环境安装图形化桌面-Gnome" class="headerlink" title="1. 为Linux环境安装图形化桌面(Gnome)"></a>1. 为Linux环境安装图形化桌面(Gnome)</h2><h4 id="云服务器：Gnome-VNC"><a href="#云服务器：Gnome-VNC" class="headerlink" title="云服务器：Gnome + VNC"></a>云服务器：Gnome + VNC</h4><p>在CentOS上，先更新系统，下载字体</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install wqy-microhei-fonts</span><br></pre></td></tr></table></figure>
 
-<h2 id="1-为Linux环境安装图形化桌面-Gnome"><a href="#1-为Linux环境安装图形化桌面-Gnome" class="headerlink" title="1. 为Linux环境安装图形化桌面(Gnome)"></a>1. 为Linux环境安装图形化桌面(Gnome)</h2><h4 id="云服务器：Gnome-VNC"><a href="#云服务器：Gnome-VNC" class="headerlink" title="云服务器：Gnome + VNC"></a>云服务器：Gnome + VNC</h4><p>在CentOS上，可以直接安装Gnome+VNC一键包</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum update &amp;&amp; yum install wqy-microhei-fonts</span><br></pre></td></tr></table></figure>
+<p>然后直接安装Gnome+VNC一键包</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://gist.githubusercontent.com/ivmm/d93138038edbd551def09205bb61ae11/raw/8ed82411926acb3ab331d293f6200447ad2c85cf/gnome_install.sh &amp;&amp; bash gnome_install.sh</span><br></pre></td></tr></table></figure>
 
-<p>输入密码即完成配置。</p>
+<p>输入密码</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/0808_aliyun-ecs-newbie-class4/#more" rel="contents">
@@ -324,7 +324,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/8 20:41" itemprop="dateModified" ="2020-08-08T20:41:26+08:00">2020/8/8</time>
+                <time title="修改时间：2020/8/9 20:26" itemprop="dateModified" ="2020-08-09T20:26:05+08:00">2020/8/9</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -345,16 +345,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="数据库与To-do-List应用"><a href="#数据库与To-do-List应用" class="headerlink" title="数据库与To-do List应用"></a>数据库与To-do List应用</h1><h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><p>新建一个<strong>实验室</strong> <strong>Midway Serverless OTS数据库示例</strong> 应用<br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
+          <h1 id="数据库与To-do-List应用"><a href="#数据库与To-do-List应用" class="headerlink" title="数据库与To-do List应用"></a>数据库与To-do List应用</h1><p>新建一个<strong>实验室</strong> <strong>Midway Serverless OTS数据库示例</strong> 应用<br><img src="../../images/2020/0807_aliyun-serverless-day5_1.png"></p>
 <p>安装依赖后运行</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
 
-<p>没有使用过表格存储(tablestore)的话需要先开通<a target="_blank" rel="noopener" href="https://cn.aliyun.com/product/ots">OTS服务</a>并创建实例，进入<strong>实例管理</strong>。<br>创建一张名叫<code>list</code>的列表，主键为<code>id</code><br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
-<p>在控制台右上方头像处，选择<strong>AccessKey管理</strong><br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
-<p>创建你的<code>AccessKeyId</code>和<code>AccessKeySecret</code><br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
-<p>在<code>src/apis/config/config.default.ts</code>文件中，我们可以看到应用需要<code>accessKeyId</code>、<code>secretAccessKey</code>、<code>endpoint</code>、<code>instancename</code>四个变量<br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
-<p>在<strong>应用配置</strong>中的环境变量中填入刚刚获得的变量即可。（<code>endpoint</code>为实例的<strong>公网</strong>访问地址）<br><img src="../../images/2020/0807_aliyun-serverless-day5_.png"></p>
-<p>打开网页，to-do list就可以进行添加、完成、删除的操作。</p>
+<p>没有使用过表格存储(tablestore)的话需要先开通<a target="_blank" rel="noopener" href="https://cn.aliyun.com/product/ots">OTS服务</a>并创建实例，然后进入<strong>实例管理</strong>。<br>创建一张名叫<code>list</code>的列表，主键为<code>id</code><br><img src="../../images/2020/0807_aliyun-serverless-day5_2.png"></p>
+<p>在控制台右上方头像处，选择<strong>AccessKey管理</strong><br><img src="../../images/2020/0807_aliyun-serverless-day5_3.png"></p>
+<p>创建你的<code>AccessKeyId</code>和<code>AccessKeySecret</code><br><img src="../../images/2020/0807_aliyun-serverless-day5_4.png"></p>
+<p>在<code>src/apis/config/config.default.ts</code>文件中，我们可以看到应用需要<code>accessKeyId</code>、<code>secretAccessKey</code>、<code>endpoint</code>、<code>instancename</code>四个变量<br><img src="../../images/2020/0807_aliyun-serverless-day5_5.png"></p>
+<p>在云开发平台的<strong>应用配置</strong>中，在环境变量处填入刚刚获得的变量即可。（<code>endpoint</code>为实例的<strong>公网</strong>访问地址）<br><img src="../../images/2020/0807_aliyun-serverless-day5_6.png"></p>
+<p>打开网页，to-do list就可以进行添加、完成、删除的操作<br><img src="../../images/2020/0807_aliyun-serverless-day5_7.png"></p>
+<p>数据也及时更新到了OTS实例的<code>list</code>列表中<br><img src="../../images/2020/0807_aliyun-serverless-day5_8.png"></p>
 
       
     </div>
@@ -407,7 +408,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/8 18:15" itemprop="dateModified" ="2020-08-08T18:15:21+08:00">2020/8/8</time>
+                <time title="修改时间：2020/8/9 15:26" itemprop="dateModified" ="2020-08-09T15:26:10+08:00">2020/8/9</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -491,7 +492,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/8 12:20" itemprop="dateModified" ="2020-08-08T12:20:17+08:00">2020/8/8</time>
+                <time title="修改时间：2020/8/9 15:26" itemprop="dateModified" ="2020-08-09T15:26:17+08:00">2020/8/9</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -576,7 +577,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/7 13:20" itemprop="dateModified" ="2020-08-07T13:20:50+08:00">2020/8/7</time>
+                <time title="修改时间：2020/8/9 15:26" itemprop="dateModified" ="2020-08-09T15:26:13+08:00">2020/8/9</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -658,7 +659,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/9 15:16" itemprop="dateModified" ="2020-08-09T15:16:13+08:00">2020/8/9</time>
+                <time title="修改时间：2020/8/9 15:26" itemprop="dateModified" ="2020-08-09T15:26:20+08:00">2020/8/9</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
