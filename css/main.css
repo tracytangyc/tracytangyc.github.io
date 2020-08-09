@@ -1,9 +1,10 @@
 :root {
   --body-bg-color: #f8f8f8;
   --content-bg-color: #fff;
-  --card-bg-color: #fafafa;
+  --card-bg-color: rgba(244,36,51,0.03);
   --text-color: #555;
   --blockquote-color: #666;
+  --blockquote-background-color: #fffcf5;
   --link-color: #555;
   --link-hover-color: #222;
   --brand-color: #fff;
@@ -248,10 +249,12 @@ hr {
   margin: 10px 0;
 }
 blockquote {
-  border-left: 4px solid #ddd;
+  border-left: 4px solid #ffc658;
+  border-radius: 5px 12px 12px 5px;
   color: var(--blockquote-color);
   margin: 0;
   padding: 0 15px;
+  background-color: var(--blockquote-background-color);
 }
 blockquote cite::before {
   content: '-';
@@ -2246,7 +2249,8 @@ pre code {
 }
 .post-copyright {
   background: var(--card-bg-color);
-  border-left: 3px solid rgba(244,36,51,0.7);
+  border-left: 4px solid rgba(244,36,51,0.7);
+  border-radius: 5px 12px 12px 5px;
   list-style: none;
   margin: 5em 0 0;
   padding: 0.5em 1em;
@@ -2808,9 +2812,15 @@ ul.breadcrumb li + li:last-child {
     margin-top: 8px;
   }
 }
-.post-body h1,
 .post-body h2 {
   border-bottom: 1px solid #f8f8f8;
+}
+.post-body h1 {
+  text-align: center;
+  font-weight: normal;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
 }
 .post-body h3 {
   border-bottom: 1px dotted #f8f8f8;
