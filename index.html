@@ -16,10 +16,11 @@
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tracytangyc.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+    var CONFIG = {"hostname":"tracytangyc.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
   <meta name="description" content="共享知识，共赢快乐">
@@ -100,6 +101,9 @@
         <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -120,6 +124,20 @@
 
 
 
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">7</span></a>
+
+  </li>
+  </ul>
+</nav>
 
 
 
@@ -152,13 +170,16 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tracytangyc"
+      src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">tracytangyc</p>
   <div class="site-description" itemprop="description">共享知识，共赢快乐</div>
 </div>
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives">
+          <a href="/archives/">
+        
           <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
@@ -173,6 +194,14 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tracytangyc" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tracytangyc" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tracytangyc@163.com" title="E-Mail → mailto:tracytangyc@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 
@@ -189,6 +218,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -207,7 +237,7 @@
     <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0808_aliyun-ecs-newbie-class4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
       <meta itemprop="name" content="tracytangyc">
       <meta itemprop="description" content="共享知识，共赢快乐">
     </span>
@@ -294,7 +324,7 @@
     <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0807_aliyun-serverless-day5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
       <meta itemprop="name" content="tracytangyc">
       <meta itemprop="description" content="共享知识，共赢快乐">
     </span>
@@ -324,7 +354,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/9 20:26" itemprop="dateModified" ="2020-08-09T20:26:05+08:00">2020/8/9</time>
+                <time title="修改时间：2020/8/9 20:58" itemprop="dateModified" ="2020-08-09T20:58:34+08:00">2020/8/9</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -349,14 +379,15 @@
 <p>安装依赖后运行</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
 
-<p>没有使用过表格存储(tablestore)的话需要先开通<a target="_blank" rel="noopener" href="https://cn.aliyun.com/product/ots">OTS服务</a>并创建实例，然后进入<strong>实例管理</strong>。<br>创建一张名叫<code>list</code>的列表，主键为<code>id</code><br><img src="../../images/2020/0807_aliyun-serverless-day5_2.png"></p>
-<p>在控制台右上方头像处，选择<strong>AccessKey管理</strong><br><img src="../../images/2020/0807_aliyun-serverless-day5_3.png"></p>
-<p>创建你的<code>AccessKeyId</code>和<code>AccessKeySecret</code><br><img src="../../images/2020/0807_aliyun-serverless-day5_4.png"></p>
-<p>在<code>src/apis/config/config.default.ts</code>文件中，我们可以看到应用需要<code>accessKeyId</code>、<code>secretAccessKey</code>、<code>endpoint</code>、<code>instancename</code>四个变量<br><img src="../../images/2020/0807_aliyun-serverless-day5_5.png"></p>
-<p>在云开发平台的<strong>应用配置</strong>中，在环境变量处填入刚刚获得的变量即可。（<code>endpoint</code>为实例的<strong>公网</strong>访问地址）<br><img src="../../images/2020/0807_aliyun-serverless-day5_6.png"></p>
-<p>打开网页，to-do list就可以进行添加、完成、删除的操作<br><img src="../../images/2020/0807_aliyun-serverless-day5_7.png"></p>
-<p>数据也及时更新到了OTS实例的<code>list</code>列表中<br><img src="../../images/2020/0807_aliyun-serverless-day5_8.png"></p>
-
+<p>没有使用过表格存储(tablestore)的话需要先开通<a target="_blank" rel="noopener" href="https://cn.aliyun.com/product/ots">OTS服务</a>并创建实例，然后进入<strong>实例管理</strong>。<br>创建一张名叫<code>list</code>的列表，主键为<code>id</code></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/0807_aliyun-serverless-day5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -378,7 +409,7 @@
     <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0807_aliyun-ecs-newbie-class3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
       <meta itemprop="name" content="tracytangyc">
       <meta itemprop="description" content="共享知识，共赢快乐">
     </span>
@@ -462,7 +493,7 @@
     <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0806_aliyun-serverless-day4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
       <meta itemprop="name" content="tracytangyc">
       <meta itemprop="description" content="共享知识，共赢快乐">
     </span>
@@ -547,7 +578,7 @@
     <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0806_hexo1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
       <meta itemprop="name" content="tracytangyc">
       <meta itemprop="description" content="共享知识，共赢快乐">
     </span>
@@ -629,7 +660,7 @@
     <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0806_aliyun-ecs-newbie-class2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
       <meta itemprop="name" content="tracytangyc">
       <meta itemprop="description" content="共享知识，共赢快乐">
     </span>
@@ -713,7 +744,7 @@
     <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0730_bash-basics/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
       <meta itemprop="name" content="tracytangyc">
       <meta itemprop="description" content="共享知识，共赢快乐">
     </span>
@@ -851,6 +882,8 @@
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   

@@ -16,18 +16,19 @@
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"tracytangyc.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+    var CONFIG = {"hostname":"tracytangyc.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
   </script>
 
-  <meta name="description" content="数据库与To-do List应用新建一个实验室 Midway Serverless OTS数据库示例 应用 安装依赖后运行 npm inpm run dev  没有使用过表格存储(tablestore)的话需要先开通OTS服务并创建实例，然后进入实例管理。创建一张名叫list的列表，主键为id 在控制台右上方头像处，选择AccessKey管理 创建你的AccessKeyId和AccessKeySe">
+  <meta name="description" content="数据库与To-do List应用新建一个实验室 Midway Serverless OTS数据库示例 应用 安装依赖后运行 npm inpm run dev  没有使用过表格存储(tablestore)的话需要先开通OTS服务并创建实例，然后进入实例管理。创建一张名叫list的列表，主键为id">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Day 5 | 阿里云：云开发校园合伙人创造营">
 <meta property="og:url" content="https://tracytangyc.github.io/2020/0807_aliyun-serverless-day5/index.html">
 <meta property="og:site_name" content="晴仔TRACY">
-<meta property="og:description" content="数据库与To-do List应用新建一个实验室 Midway Serverless OTS数据库示例 应用 安装依赖后运行 npm inpm run dev  没有使用过表格存储(tablestore)的话需要先开通OTS服务并创建实例，然后进入实例管理。创建一张名叫list的列表，主键为id 在控制台右上方头像处，选择AccessKey管理 创建你的AccessKeyId和AccessKeySe">
+<meta property="og:description" content="数据库与To-do List应用新建一个实验室 Midway Serverless OTS数据库示例 应用 安装依赖后运行 npm inpm run dev  没有使用过表格存储(tablestore)的话需要先开通OTS服务并创建实例，然后进入实例管理。创建一张名叫list的列表，主键为id">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://tracytangyc.github.io/images/2020/0807_aliyun-serverless-day5_1.png">
 <meta property="og:image" content="https://tracytangyc.github.io/images/2020/0807_aliyun-serverless-day5_2.png">
@@ -38,7 +39,7 @@
 <meta property="og:image" content="https://tracytangyc.github.io/images/2020/0807_aliyun-serverless-day5_7.png">
 <meta property="og:image" content="https://tracytangyc.github.io/images/2020/0807_aliyun-serverless-day5_8.png">
 <meta property="article:published_time" content="2020-08-07T14:51:59.000Z">
-<meta property="article:modified_time" content="2020-08-09T12:26:05.381Z">
+<meta property="article:modified_time" content="2020-08-09T12:58:34.995Z">
 <meta property="article:author" content="tracytangyc">
 <meta property="article:tag" content="阿里云">
 <meta name="twitter:card" content="summary">
@@ -111,6 +112,9 @@
         <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -131,6 +135,20 @@
 
 
 
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">7</span></a>
+
+  </li>
+  </ul>
+</nav>
 
 
 
@@ -164,13 +182,16 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tracytangyc"
+      src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">tracytangyc</p>
   <div class="site-description" itemprop="description">共享知识，共赢快乐</div>
 </div>
 <div class="site-state-wrap animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives">
+          <a href="/archives/">
+        
           <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
@@ -185,6 +206,14 @@
       </div>
   </nav>
 </div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tracytangyc" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tracytangyc" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tracytangyc@163.com" title="E-Mail → mailto:tracytangyc@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
 
 
 
@@ -201,6 +230,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 <noscript>
   <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
@@ -220,7 +250,7 @@
     <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0807_aliyun-serverless-day5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.png">
       <meta itemprop="name" content="tracytangyc">
       <meta itemprop="description" content="共享知识，共赢快乐">
     </span>
@@ -249,7 +279,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/9 20:26" itemprop="dateModified" ="2020-08-09T20:26:05+08:00">2020/8/9</time>
+                <time title="修改时间：2020/8/9 20:58" itemprop="dateModified" ="2020-08-09T20:58:34+08:00">2020/8/9</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -274,7 +304,10 @@
 <p>安装依赖后运行</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
 
-<p>没有使用过表格存储(tablestore)的话需要先开通<a target="_blank" rel="noopener" href="https://cn.aliyun.com/product/ots">OTS服务</a>并创建实例，然后进入<strong>实例管理</strong>。<br>创建一张名叫<code>list</code>的列表，主键为<code>id</code><br><img src="../../images/2020/0807_aliyun-serverless-day5_2.png"></p>
+<p>没有使用过表格存储(tablestore)的话需要先开通<a target="_blank" rel="noopener" href="https://cn.aliyun.com/product/ots">OTS服务</a>并创建实例，然后进入<strong>实例管理</strong>。<br>创建一张名叫<code>list</code>的列表，主键为<code>id</code></p>
+<a id="more"></a>
+
+<p><img src="../../images/2020/0807_aliyun-serverless-day5_2.png"></p>
 <p>在控制台右上方头像处，选择<strong>AccessKey管理</strong><br><img src="../../images/2020/0807_aliyun-serverless-day5_3.png"></p>
 <p>创建你的<code>AccessKeyId</code>和<code>AccessKeySecret</code><br><img src="../../images/2020/0807_aliyun-serverless-day5_4.png"></p>
 <p>在<code>src/apis/config/config.default.ts</code>文件中，我们可以看到应用需要<code>accessKeyId</code>、<code>secretAccessKey</code>、<code>endpoint</code>、<code>instancename</code>四个变量<br><img src="../../images/2020/0807_aliyun-serverless-day5_5.png"></p>
@@ -394,6 +427,8 @@
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
