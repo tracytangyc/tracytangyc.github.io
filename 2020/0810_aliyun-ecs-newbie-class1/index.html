@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tracytangyc.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+  </script>
+
+  <meta name="description" content="7天学会ECS 第一课链接：文档【7天学会ECS】前四部分为Class2-4的总结。  开通云服务器购买网址：https:&#x2F;&#x2F;ecs-buy.aliyun.com&#x2F;#&#x2F;prepay 1.计费方式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Class 1 | 阿里云：ECS 7天实践训练营 新人路线">
+<meta property="og:url" content="https://tracytangyc.github.io/2020/0810_aliyun-ecs-newbie-class1/index.html">
+<meta property="og:site_name" content="晴仔TRACY">
+<meta property="og:description" content="7天学会ECS 第一课链接：文档【7天学会ECS】前四部分为Class2-4的总结。  开通云服务器购买网址：https:&#x2F;&#x2F;ecs-buy.aliyun.com&#x2F;#&#x2F;prepay 1.计费方式">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-10T07:04:30.000Z">
+<meta property="article:modified_time" content="2020-08-10T10:41:22.482Z">
+<meta property="article:author" content="tracytangyc">
+<meta property="article:tag" content="阿里云">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://tracytangyc.github.io/2020/0810_aliyun-ecs-newbie-class1/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Class 1 | 阿里云：ECS 7天实践训练营 新人路线 | 晴仔TRACY</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">晴仔TRACY</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">8</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点导航
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#7%E5%A4%A9%E5%AD%A6%E4%BC%9AECS"><span class="nav-text">7天学会ECS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E9%80%9A%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">开通云服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AE%A1%E8%B4%B9%E6%96%B9%E5%BC%8F"><span class="nav-text">1.计费方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%9C%B0%E5%9F%9F"><span class="nav-text">2.地域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E7%BD%91%E7%BB%9C"><span class="nav-text">3.网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%AE%9E%E4%BE%8B%E7%B3%BB%E5%88%97"><span class="nav-text">4.实例系列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E5%85%AC%E7%BD%91%E5%B8%A6%E5%AE%BD"><span class="nav-text">5.公网带宽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E9%95%9C%E5%83%8F"><span class="nav-text">6.镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E5%AD%98%E5%82%A8"><span class="nav-text">7.存储</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E5%85%B6%E4%BB%96"><span class="nav-text">8.其他</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-%E5%AE%89%E5%85%A8%E8%AE%BE%E7%BD%AE"><span class="nav-text">9.安全设置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%AE%80%E5%8E%86%E7%BD%91%E7%AB%99"><span class="nav-text">搭建自己的简历网站</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%BC%80%E9%80%9AECS%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">1.开通ECS云服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85%E7%BD%91%E9%A1%B5%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="nav-text">2.安装网页运行环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%88%B6%E4%BD%9C%E4%B8%AA%E4%BA%BA%E5%BB%BA%E7%AB%8B%E7%BD%91%E9%A1%B5"><span class="nav-text">3.制作个人建立网页</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%B0%86%E7%AE%80%E5%8E%86%E4%B8%8A%E4%BC%A0%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-text">4.将简历上传到服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%93%E9%80%A0%E5%9C%A8%E7%BA%BF%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83"><span class="nav-text">打造在线编程环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2Web-IDE%EF%BC%9A"><span class="nav-text">部署Web IDE：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BALinux%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83"><span class="nav-text">搭建Linux学习环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%BC%80%E9%80%9AECS%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-1"><span class="nav-text">1.开通ECS云服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Linux%E7%9A%84%E8%BF%9C%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="nav-text">2.Linux的远程管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E4%B8%BA-Linux-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E5%8C%96%E6%A1%8C%E9%9D%A2%EF%BC%88Gnome%EF%BC%89"><span class="nav-text">3.为 Linux 环境安装图形化桌面（Gnome）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%AD%A6%E4%B9%A0Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-text">4.学习Linux的基本操作</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E4%B8%93%E5%B1%9E%E7%9A%84%E4%BA%91%E7%AC%94%E8%AE%B0"><span class="nav-text">搭建自己专属的云笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%BC%80%E9%80%9AECS%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8-2"><span class="nav-text">1.开通ECS云服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85Leanote%E7%A8%8B%E5%BA%8F"><span class="nav-text">2.安装Leanote程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E9%85%8D%E7%BD%AELeanote"><span class="nav-text">3.配置Leanote</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%BD%BF%E7%94%A8Leanote"><span class="nav-text">4.使用Leanote</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8EECS%E6%90%AD%E5%BB%BA%E4%BA%91%E4%B8%8A%E5%8D%9A%E5%AE%A2"><span class="nav-text">基于ECS搭建云上博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9C%A8%E6%9C%AC%E5%9C%B0Windows%E7%94%B5%E8%84%91%E4%B8%8A%E8%BF%9E%E6%8E%A5ECS%E5%AE%9E%E4%BE%8B"><span class="nav-text">1.在本地Windows电脑上连接ECS实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83"><span class="nav-text">2.安装环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85PHP"><span class="nav-text">3.安装PHP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E9%85%8D%E7%BD%AEIIS"><span class="nav-text">4.配置IIS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%B5%8B%E8%AF%95PHP%E6%98%AF%E5%90%A6%E6%AD%A3%E5%B8%B8%E8%BF%90%E8%A1%8C"><span class="nav-text">5.测试PHP是否正常运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E5%AE%89%E8%A3%85MySQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-text">7.安装MySQL数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-%E5%AE%89%E8%A3%85Emlog%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F"><span class="nav-text">8.安装Emlog博客程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%93%E5%B1%95%EF%BC%9A%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90%E9%85%8D%E7%BD%AE"><span class="nav-text">拓展：域名解析配置</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tracytangyc"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">tracytangyc</p>
+  <div class="site-description" itemprop="description">共享知识，共赢快乐</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tracytangyc" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tracytangyc" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tracytangyc@163.com" title="E-Mail → mailto:tracytangyc@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0810_aliyun-ecs-newbie-class1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="tracytangyc">
+      <meta itemprop="description" content="共享知识，共赢快乐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晴仔TRACY">
+    </span>
+
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Class 1 | 阿里云：ECS 7天实践训练营 新人路线
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表</span>
+              
+
+              <time title="创建时间：2020/8/10 15:04 / 修改时间：18:41" itemprop="dateCreated datePublished" datetime="2020-08-10T15:04:30+08:00">2020/8/10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="7天学会ECS"><a href="#7天学会ECS" class="headerlink" title="7天学会ECS"></a>7天学会ECS</h1><blockquote>
+<p>第一课链接：文档<a target="_blank" rel="noopener" href="https://developer.aliyun.com/topic/download?spm=a2c6h.12873639.0.0">【7天学会ECS】</a><br>前四部分为Class2-4的总结。</p>
+</blockquote>
+<h2 id="开通云服务器"><a href="#开通云服务器" class="headerlink" title="开通云服务器"></a>开通云服务器</h2><p>购买网址：<a target="_blank" rel="noopener" href="https://ecs-buy.aliyun.com/#/prepay">https://ecs-buy.aliyun.com/#/prepay</a></p>
+<h4 id="1-计费方式"><a href="#1-计费方式" class="headerlink" title="1.计费方式"></a>1.计费方式</h4><a id="more"></a>
+
+<p>包年包月：预付费产品，先购买数月/年ECS产品，后使用。适用于长期稳定使用服务器的场景。例如做网站。<br>按量付费：后付费产品，保证有100元余额后按量（每小时花费）付费。适用于测试或跑数据。</p>
+<h4 id="2-地域"><a href="#2-地域" class="headerlink" title="2.地域"></a>2.地域</h4><p>地域 (Region)：服务器数据中心所在的城市。例如华东1（杭州）、华东2（上海）。地域之间的ECS不可内网互联。<br>可用区 (Zone)：同一地域下数据中心所在的地区。距离近，有光纤连接，内网可互联。</p>
+<p>购买ECS时建议选择业务中访客最多、转化率最高的地域，而非离你最近的。</p>
+<h4 id="3-网络"><a href="#3-网络" class="headerlink" title="3.网络"></a>3.网络</h4><p>经典网络（早期ECS使用）：同一地域内的所有ECS、OSS、RDS可互联，并通过安全组实现访问的控制。<br>专有网络（推荐）：用户自有一个虚拟路由网络与交换机，同一网络和交换机下的ECS、OSS、RDS等才可以互联。另外，可以绑定弹性IP，方便更换ECS时保持IP不变。</p>
+<h4 id="4-实例系列"><a href="#4-实例系列" class="headerlink" title="4.实例系列"></a>4.实例系列</h4><p>实例：云服务器的规格。包括CPU、内存等，按需选择。</p>
+<h4 id="5-公网带宽"><a href="#5-公网带宽" class="headerlink" title="5.公网带宽"></a>5.公网带宽</h4><p>按流量计费：按具体使用流量（每GB）收费，不同地域的资费标准不同。<br>按带宽计费：先买断带宽(M)，流量不计费。建议至少有2M带宽，配合OSS放置资源。</p>
+<h4 id="6-镜像"><a href="#6-镜像" class="headerlink" title="6.镜像"></a>6.镜像</h4><p>公共镜像：阿里云官方提供的公共基础镜像。仅包括初始系统环境，需自主配置应用环境和软件配置。<br>自定义镜像：由用户系统快照生成。包括初始系统环境、应用环境、软件配置，可以节省配置时间。<br>共享镜像：其他账号共享给你的自定义镜像。用户自行承担镜像完整性与安全性的风险。<br>镜像市场：经严格审核的优质镜像。预装操作系统、应用环境、软件，无需配置（一键部署），使用于建站、应用开发、可视化管理等个性化场景。</p>
+<h4 id="7-存储"><a href="#7-存储" class="headerlink" title="7.存储"></a>7.存储</h4><p>系统盘：操作系统所安装的虚拟硬盘。<br>数据盘：提供挂载到某一盘符或目录下。安全可靠性更高，适用于存放网站数据。<br>普通云盘（早期ECS使用）：三盘副本，高可靠性，但性能孱弱。只用于无I/O优化的实例。<br>高效云盘：三盘副本，高可靠性，拥有1240-3000 IOPS的磁盘性能。60G以下的性价比高。<br>SSD云盘：容量越大性能越好，最大20000 IOPS。60G以上性能价值明显。</p>
+<h4 id="8-其他"><a href="#8-其他" class="headerlink" title="8.其他"></a>8.其他</h4><p>购买时长：选择1周/1-9个月/1-5年，是否自动续费。<br>台数：选择购买多少台相同配置的ECS。</p>
+<h4 id="9-安全设置"><a href="#9-安全设置" class="headerlink" title="9.安全设置"></a>9.安全设置</h4><p>设置密钥：通过密钥文件登入Linux系统。<br>自定义密码（推荐新手）：通过密码登入Linux或Windows系统的root账号。<br>创建后设置（不推荐）：生成实例后自行重置密码。</p>
+<br>
+
+<h2 id="搭建自己的简历网站"><a href="#搭建自己的简历网站" class="headerlink" title="搭建自己的简历网站"></a>搭建自己的简历网站</h2><h4 id="1-开通ECS云服务器"><a href="#1-开通ECS云服务器" class="headerlink" title="1.开通ECS云服务器"></a>1.开通ECS云服务器</h4><p>见：<a href="#%E5%BC%80%E9%80%9A%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8">开通云服务器</a></p>
+<h4 id="2-安装网页运行环境"><a href="#2-安装网页运行环境" class="headerlink" title="2.安装网页运行环境"></a>2.安装网页运行环境</h4><p><strong>镜像：</strong></p>
+<p>主流建站环境为LAMP (Linux + Apache Httpd + MySQL + PHP)环境，兼容绝大部分HTML和PHP运行需求。</p>
+<p>在镜像市场中选择<code>LAMP 环境（Ubuntu16.04 Apache PHP7.1）</code>，它提供OSS备份、Let’s Encrypt等，并允许Apache、PHP等组件自行省级。</p>
+<p>对于未购买ECS的用户，可以直接在选择配置时进入镜像市场。已购买ECS者，需先<strong>强制停止</strong>ECS实例，在<strong>配置信息</strong>中<strong>更换系统盘</strong>，进入镜像市场。另外，可以单独进入<a target="_blank" rel="noopener" href="https://market.aliyun.com/products/53398003/cmjj016263.html">镜像市场页面</a>购买镜像。</p>
+<p><strong>安全组：</strong></p>
+<p>进入<strong>本实例安全组</strong>，在<strong>配置规则</strong>中<strong>手动添加</strong>安全组。<br>对VPC（专有网络）入门者，建议选择<strong>入方向</strong>开放所有端口并允许所有IP访问：</p>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">授权类型：全部</span><br><span class="line">授权对象：<span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>/<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>对经典网络使用者，只需设置公网出入方向，无需设置内网。</p>
+<p><strong>查看网站：</strong><br>访问<code>http://公网IP/</code>，若使用LAMP镜像，即可看到OneinStack初始网页。</p>
+<p>点击<strong>探针</strong>、<strong>phpinfo</strong>、<strong>phpMyAdmin</strong>，可分别查看PHP运行环境、PHP配置信息和MySQL可视化操作界面。</p>
+<h4 id="3-制作个人建立网页"><a href="#3-制作个人建立网页" class="headerlink" title="3.制作个人建立网页"></a>3.制作个人建立网页</h4><p>推荐使用<a target="_blank" rel="noopener" href="https://code.visualstudio.com/Downloa">Visual Studio Code (VSC)</a> IDE编辑并制作网页。</p>
+<p>响应式HTML简历模板：<a target="_blank" rel="noopener" href="https://edu.aliyun.com/course/147/material/6435/download">https://edu.aliyun.com/course/147/material/6435/download</a></p>
+<p><strong>修改HTML标题：</strong><br><code>&lt;head&gt;</code>标签下</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Type&quot;</span> <span class="attr">content</span>=<span class="string">&quot;text/html; charset=UTF-8&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>你的名字 的个人简历<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;initial-scale=1.0,width=device-width&quot;</span>&gt;</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改HTML主体内容：</strong><br><code>&lt;body&gt;</code>标签下<br>个人资料：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;titleName&quot;</span> <span class="attr">class</span>=<span class="string">&quot;sectionHead&quot;</span>&gt;</span>你的名字<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">    年　　龄：     XX<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    手　　机：     13XXXXXXXXX<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    邮　　箱：     xxxxxx@gmail.com<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    户　　籍：     XX XX<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    目前状态：     XXX<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    所在地点：     XXX<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    工作年限：     X年<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    期望职位：     XX工程师<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>技能：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;skills&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ready&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--请注意，类别名称表示您的技能的百分比。即s70 = 70％，s40 = 40％.--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;skill1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;sXX&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>.NET 框架开发（C#、ASP.net、MVC等）<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;skill2&quot;</span> <span class="attr">class</span>=<span class="string">&quot;sXX&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>Java 开发（SSH、SSM框架）<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;skill3&quot;</span> <span class="attr">class</span>=<span class="string">&quot;sXX&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>前端开发（JQuery、Angular、Bootstrap、ES6）<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;skill4&quot;</span> <span class="attr">class</span>=<span class="string">&quot;sXX&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;display: inline;&quot;</span>&gt;</span>Linux平台使用<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;skill5&quot;</span> <span class="attr">class</span>=<span class="string">&quot;sXX&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>NodeJS开发<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;skill6&quot;</span> <span class="attr">class</span>=<span class="string">&quot;sXX&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>H5 Web APP（PhoneGap、Ionic）<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;skill7&quot;</span> <span class="attr">class</span>=<span class="string">&quot;sXX&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;display: inline;&quot;</span>&gt;</span>Python<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;skill8&quot;</span> <span class="attr">class</span>=<span class="string">&quot;sXX&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;display: inline;&quot;</span>&gt;</span>C++开发<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">&quot;skill9&quot;</span> <span class="attr">class</span>=<span class="string">&quot;sXX&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">&quot;display: inline;&quot;</span>&gt;</span>数据库<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其他（经理、教育等）同上。</p>
+<p>更换作品图片：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">&quot;seenOn&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;bwWrapper&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;相对/绝对路径&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;pic1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;bwWrapper&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;相对/绝对路径&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;pic2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">&quot;bwWrapper&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;相对/绝对路径&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;pic3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-将简历上传到服务器"><a href="#4-将简历上传到服务器" class="headerlink" title="4.将简历上传到服务器"></a>4.将简历上传到服务器</h4><p><strong>安装 FileZilla：</strong></p>
+<p><a target="_blank" rel="noopener" href="https://filezilla-project.org/download.php?type=client">FileZilla</a> 是支持中文的跨平台FTP软件，支持通过SFTP协议从本地传输文件到虚拟主机（Linux发行版）。</p>
+<p>快速连接:</p>
+<ul>
+<li>主机 <code>sftp://公网IP</code></li>
+<li>用户名 <code>root</code></li>
+<li>密码 <code>创建ECS时设置的密码</code></li>
+<li>端口 <code>22</code></li>
+</ul>
+<p>上传文件：</p>
+<ul>
+<li>进入<code>/data/wwwroot/default/</code></li>
+<li>在当前目录新建文件夹，并把所有当前目录的文件移入其中</li>
+<li>把简历项目文件拖拽至当前目录</li>
+</ul>
+<p>打开网页：</p>
+<ul>
+<li>访问<code>http://公网IP</code></li>
+</ul>
+<br>
+
+<h2 id="打造在线编程环境"><a href="#打造在线编程环境" class="headerlink" title="打造在线编程环境"></a>打造在线编程环境</h2><p>选用Coding WebIDE实现在线编辑，需利用容器服务进行简便的管理集群搭建工作。推荐Docker容器镜像，整合阿里云虚拟化、存储、网络、安全能力——镜像市场中选择Docker运行环境<code>(Ubuntu 16.04 64位)</code>。</p>
+<h4 id="部署Web-IDE："><a href="#部署Web-IDE：" class="headerlink" title="部署Web IDE："></a>部署Web IDE：</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://ide.coding.net/">Coding WeblDE</a> 是 Coding 自主研发的在线集成开发<br>环境 (IDE)。用户可以通过 WebIDE 创建项目的工作空间，进行在线开发，调试等操<br>作，同时 WebIDE 集成了 Git 代码版本控制，支持绝大部分 Git 托管。</p>
+</blockquote>
+<p><strong>下载PuTTY传输终端：</strong></p>
+<p>PuTTY可用于Telnet/SSH传输，跨平台，适用于Win32和Unix系统下模拟xterm终端，并且有<a target="_blank" rel="noopener" href="https://github.com/larryli/PuTTY/releases">中文版</a>。</p>
+<p>打开客户端后配置新的会话(session)：</p>
+<ul>
+<li>主机名称 <code>公网IP</code></li>
+<li>端口 <code>22</code></li>
+<li>连接类型 <code>SSH</code></li>
+</ul>
+<p>输入<strong>保存的会话</strong>后<strong>保存</strong>，可以在下次使用终端时直接载入会话配置，无须再次输入。<br><strong>打开</strong>后输入用户名<code>root</code>和ECS实例密码。</p>
+<p>在ECS上安装并运行容器化WebIDE：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://git.coding.net/coding/WebIDE.git</span><br><span class="line"><span class="built_in">cd</span> WebIDE</span><br><span class="line">./ide.sh docker run</span><br></pre></td></tr></table></figure>
+
+<p>在本地浏览器打开<code>公网IP:端口号</code>即可进入WebIDE。</p>
+<p><strong>使用WebIDE：</strong></p>
+<p>网页上，点击 <strong>Show public key</strong>，查看IDE公钥。<br>进入GitHub，在 <strong>Settings &gt; Deploy keys</strong> 中添加公钥。<br>复制GitHub仓库的SSH地址到WebIDE中，点击<strong>Creating</strong>。<br>加载后点击<strong>Open</strong>，即可进入IDE。</p>
+<p>添加文件并保存后，菜单栏 <strong>版本 &gt; 提交</strong> 中填入提交信息，按 <strong>版本 &gt; 推送</strong> 把文件同步到GitHub仓库。</p>
+<br>
+
+<h2 id="搭建Linux学习环境"><a href="#搭建Linux学习环境" class="headerlink" title="搭建Linux学习环境"></a>搭建Linux学习环境</h2><h4 id="1-开通ECS云服务器-1"><a href="#1-开通ECS云服务器-1" class="headerlink" title="1.开通ECS云服务器"></a>1.开通ECS云服务器</h4><p>见：<a href="#%E5%BC%80%E9%80%9A%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8">开通云服务器</a></p>
+<h4 id="2-Linux的远程管理"><a href="#2-Linux的远程管理" class="headerlink" title="2.Linux的远程管理"></a>2.Linux的远程管理</h4><p><strong>命令终端：</strong><br>使用PuTTY终端。见：<a href="#%E6%89%93%E9%80%A0%E5%9C%A8%E7%BA%BF%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83">打造在线编程环境</a></p>
+<p><strong>文件传输：</strong><br>使用FileZilla软件。见：<a href="#4.%E5%B0%86%E7%AE%80%E5%8E%86%E4%B8%8A%E4%BC%A0%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8">将简历上传到服务器</a></p>
+<p><strong>代码编辑：</strong><br>由于Linux和Windows上的字符和配置文件不同，千万不要使用txt编辑器（记事本等）。推荐<a target="_blank" rel="noopener" href="https://code.visualstudio.com/Download">Visual Studio Code</a>。</p>
+<p><strong>设置安全组：</strong><br>见：<a href="#2.%E5%AE%89%E8%A3%85%E7%BD%91%E9%A1%B5%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83">安装网页运行环境</a></p>
+<h4 id="3-为-Linux-环境安装图形化桌面（Gnome）"><a href="#3-为-Linux-环境安装图形化桌面（Gnome）" class="headerlink" title="3.为 Linux 环境安装图形化桌面（Gnome）"></a>3.为 Linux 环境安装图形化桌面（Gnome）</h4><p>更换镜像为<strong>公共镜像</strong> <code>CentOS 7 64bit</code>。</p>
+<p>更新软件源并升级系统：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum update &amp;&amp; yum install wqy-microhei-fonts</span><br></pre></td></tr></table></figure>
+
+<p>安装Gnome+VNC一键包（按任意键开始，<code>Ctrl+C</code>取消）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://gist.githubusercontent.com/ivmm/d93138038edbd551def09205bb61ae11/raw/8ed82411926acb3ab331d293f6200447ad2c85cf/</span><br><span class="line">gnome_install.sh &amp;&amp; bash gnome_install.sh</span><br></pre></td></tr></table></figure>
+<p>按终端提示设置VNC连接密码，与root密码无关。</p>
+<p><strong>下载VNC Viewer：</strong></p>
+<p>选用TightVNC的<a target="_blank" rel="noopener" href="http://www.tightvnc.com/download/1.3.10/tightvnc-1.3.10_x86_viewer.zip">VNC Viewer</a>。</p>
+<p>运行并连接：</p>
+<ul>
+<li>VNC server <code>公网IP:5901</code></li>
+<li>Connection profile <code>Default connection options</code></li>
+<li>输入VNC连接密码</li>
+</ul>
+<p>即可看到图形化界面终端。</p>
+<h4 id="4-学习Linux的基本操作"><a href="#4-学习Linux的基本操作" class="headerlink" title="4.学习Linux的基本操作"></a>4.学习Linux的基本操作</h4><p>见：<a href="https://tracytangyc.github.io/2020/0808_aliyun-ecs-newbie-class4/#2-%E5%AD%A6%E4%B9%A0Linux%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">Class 4 学习Linux的基本操作</a></p>
+<br>
+
+<h2 id="搭建自己专属的云笔记"><a href="#搭建自己专属的云笔记" class="headerlink" title="搭建自己专属的云笔记"></a>搭建自己专属的云笔记</h2><p>选用MongoDB数据库和二进制版Leanote开源云笔记软件。</p>
+<h4 id="1-开通ECS云服务器-2"><a href="#1-开通ECS云服务器-2" class="headerlink" title="1.开通ECS云服务器"></a>1.开通ECS云服务器</h4><p>见：<a href="#%E5%BC%80%E9%80%9A%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8">开通云服务器</a></p>
+<h4 id="2-安装Leanote程序"><a href="#2-安装Leanote程序" class="headerlink" title="2.安装Leanote程序"></a>2.安装Leanote程序</h4><blockquote>
+<p>Leanote开源云笔记软件，使用Go的Web框架revel和MongoDB开<br>发，支持多语言多用户。</p>
+</blockquote>
+<p><strong>设置安全组：</strong><br>见：<a href="#2.%E5%AE%89%E8%A3%85%E7%BD%91%E9%A1%B5%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83">安装网页运行环境</a></p>
+<p><strong>安装MongoDB：</strong></p>
+<p>导入包管理系统使用的公钥</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6</span><br></pre></td></tr></table></figure>
+
+<p>创建MongoDB列表</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodborg/3.4 multiverse&quot;</span> | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/</span></span><br><span class="line"><span class="string">mongodb-org/3.4 multiverse&quot;</span> | sudo tee /etc/apt/sources.list.d/mongodb-org3.4.list</span><br></pre></td></tr></table></figure>
+
+<p>更新本地宝数据库后安装MongoDB</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get upgrade</span><br><span class="line">sudo apt-get install -y mongodb-org</span><br></pre></td></tr></table></figure>
+
+<p><strong>安装Leanote：</strong></p>
+<p>下载二进制包（也可本地下载后用SFTP上传）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://nchc.dl.sourceforge.net/project/leanote-bin/2.6.1/leanote-linuxamd64-v2.6.1.bin.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>解压</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar xzf leanote-linux-amd64-v2.6.1.bin.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>启动并导入数据库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service mongod start</span><br><span class="line"><span class="built_in">cd</span> leanote</span><br><span class="line">mongorestore -h localhost -d leanote --dir mongodb_backup/leanote_install_data/</span><br></pre></td></tr></table></figure>
+<p>成功后将输出<code>done</code>。</p>
+<p>启动Leanote</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span></span><br><span class="line">apt install screen</span><br><span class="line"> screen -S leanote</span><br><span class="line"><span class="built_in">cd</span> leanote/bin</span><br><span class="line">bash run.sh</span><br></pre></td></tr></table></figure>
+<p>成功后将输出<code>Listening on: 9000...</code>。</p>
+<h4 id="3-配置Leanote"><a href="#3-配置Leanote" class="headerlink" title="3.配置Leanote"></a>3.配置Leanote</h4><p>按<code>Ctrl+C</code>退出Leanote的Listening进程后，进入上层目录修改配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ../</span><br><span class="line">ls</span><br><span class="line"><span class="built_in">cd</span> conf</span><br><span class="line">ls</span><br><span class="line">sudo vim app.conf</span><br></pre></td></tr></table></figure>
+
+<p>修改<code>run.sh</code></p>
+<ul>
+<li>按<code>i</code>进入编辑模式</li>
+<li><pre><code class="bash">http.port=80
+&lt;!--hexoPostRenderEscape:&lt;figure class=&quot;highlight autohotkey&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;title&quot;&gt;- `Esc` &amp;gt; `:&lt;/span&gt;wq` &amp;gt; `Enter` 保存并 退出&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;运行&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;```bash&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;bash ../bin/run.sh&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;:hexoPostRenderEscape--&gt;
+</code></pre>
+</li>
+</ul>
+<p>将输出<code>Listening on.. 0.0.0.0:80</code>。<br>即可用浏览器打开<code>https:公网IP</code>访问Leanote。</p>
+<h4 id="4-使用Leanote"><a href="#4-使用Leanote" class="headerlink" title="4.使用Leanote"></a>4.使用Leanote</h4><p>选择<strong>登录</strong>，输入账号<code>admin</code>，密码<code>abd123</code>，即可开始使用。笔记会实时保存。<br>在右上角头像下拉菜单<strong>后台管理</strong>页，<strong>Configuration</strong>中修改<code>Site&#39;s URL</code>为公网IP，<code>Open Register</code>取消勾选，使网页不开放注册功能。</p>
+<br>
+
+<h2 id="基于ECS搭建云上博客"><a href="#基于ECS搭建云上博客" class="headerlink" title="基于ECS搭建云上博客"></a>基于ECS搭建云上博客</h2><p>更换镜像为Windows操作系统（公共镜像<code>Windows Server</code> &gt; <code>2012 标准版 中文版 64位</code>）。</p>
+<h4 id="1-在本地Windows电脑上连接ECS实例"><a href="#1-在本地Windows电脑上连接ECS实例" class="headerlink" title="1.在本地Windows电脑上连接ECS实例"></a>1.在本地Windows电脑上连接ECS实例</h4><p><code>Win+R</code> &gt; 输入 <code>mstsc</code>，打开远程桌面连接。<br>首次使用时打开<strong>显示选项</strong> &gt; <strong>本地资源</strong> &gt; 勾选 <strong>剪贴板</strong>。<br><strong>计算机</strong>处输入<code>公网IP</code>。</p>
+<h4 id="2-安装环境"><a href="#2-安装环境" class="headerlink" title="2.安装环境"></a>2.安装环境</h4><p><strong>各安装连接：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://download.microsoft.com/download/9/C/D/9CD480DC-0301-41B0-AAAB-FE9AC1F60237/VSU4/vcredist_x64.exe">Visual C++ Redistributable for Visual Studio 2012 Update 4(x64)</a></li>
+<li><a target="_blank" rel="noopener" href="https://download.microsoft.com/download/9/3/F/93FCF1E7-E6A4-478B-96E7-D4B285925B00/vc_redist.x64.exe">Visual C++ Redistributable for Visual Studio 2015</a></li>
+<li><a target="_blank" rel="noopener" href="https://windows.php.net/downloads/releases/php-7.2.28-nts-Win32-VC15-x64.zip">PHP环境（需先安装Visual C++）</a></li>
+<li><a target="_blank" rel="noopener" href="http://ftp.kaist.ac.kr/mysql/Downloads/MySQL-5.5/mysql-5.5.60-winx64.msi">MySQL 5.5</a></li>
+<li><a target="_blank" rel="noopener" href="http://bbs.emlog.net/thread-65327-1-1.html">EMLOG博客程序</a></li>
+</ul>
+<p><strong>安装IIS：</strong></p>
+<ul>
+<li>服务管理器</li>
+<li>添加角色和功能</li>
+<li>基于角色或基于功能的安装</li>
+<li>从服务器池中选择服务器</li>
+<li>勾选<code>Web服务器（IIS）</code></li>
+<li>勾选<code>包括管理工具（如适用）</code> &gt; 添加功能</li>
+<li>勾选<code>Web服务器（IIS）</code></li>
+<li>保持默认半勾选<code>.NET Framework 4.5 功能（2个已安装，共7个）</code></li>
+<li>全选<code>Web服务器</code></li>
+<li>保持默认勾选，额外勾选<code>CGI</code>，全选<code>管理工具</code></li>
+</ul>
+<p>打开IE浏览器访问<code>http://127.0.0.1/</code>，可以访问页面，显示<strong>Internet Information Services</strong>。</p>
+<h4 id="3-安装PHP"><a href="#3-安装PHP" class="headerlink" title="3.安装PHP"></a>3.安装PHP</h4><p>先依次安装两项Visual Studio C++。<br>在<code>C:</code>盘目录下创建<code>php7.2</code>目录，解压PHP下载文件后放入其中。</p>
+<p>重命名<code>php.ini-production</code>为<code>php.ini</code>，以记事本打开，取消注释以下文字</p>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">extension_dir</span> = <span class="string">&quot;C:\php7.2\ext&quot;</span></span><br><span class="line"><span class="attr">date.timezone</span> = PRC</span><br><span class="line"><span class="attr">short_open_tag</span> = <span class="literal">On</span></span><br><span class="line"><span class="attr">cgi.force_redirect</span> = <span class="number">0</span></span><br><span class="line"><span class="attr">fastcgi.impersonate</span> = <span class="number">1</span></span><br><span class="line"><span class="attr">cgi.rfc2616_headers</span> = <span class="number">1</span></span><br><span class="line"><span class="attr">extension</span>=curl</span><br><span class="line"><span class="attr">extension</span>=gd2</span><br><span class="line"><span class="attr">extension</span>=mbstring</span><br><span class="line"><span class="attr">extension</span>=exif <span class="comment">; Must be after mbstring as it depends on it</span></span><br><span class="line"><span class="attr">extension</span>=mysqli</span><br><span class="line"><span class="attr">extension</span>=pdo_mysql</span><br><span class="line"><span class="attr">extension</span>=sockets</span><br><span class="line"><span class="attr">extension</span>=xmlrpc</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-配置IIS"><a href="#4-配置IIS" class="headerlink" title="4.配置IIS"></a>4.配置IIS</h4><p>开始菜单点击<strong>管理工具</strong>，打开<strong>Internet Information Services (IIS) 管理器</strong>。</p>
+<ul>
+<li>起始页 &gt; 处理程序映射</li>
+<li>添加模块映射<ul>
+<li>请求路径 <code>*.php</code></li>
+<li>模块 <code>FastCgiModule</code></li>
+<li>可执行文件（可选） <code>C:\php7.2\php-cgi.exe</code></li>
+<li>名称 <code>FastCGI</code></li>
+</ul>
+</li>
+<li>是</li>
+<li>起始页 &gt; FastCGI 设置</li>
+<li>右键<code>C:\php7.2\php-cgi.exe</code> <strong>编辑…</strong><ul>
+<li>监视对文件所做的更改 <code>C:\php7.2\php.ini</code></li>
+<li>环境变量 <code>...</code> &gt; <strong>添加</strong><ul>
+<li>Name <code>PHP_FCGI_MAX_REQUESTS</code></li>
+<li>Value <code>1000</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>起始页 &gt; 默认文档</li>
+<li>右侧操作 <strong>添加</strong><ul>
+<li>名称 <code>index.php</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="5-测试PHP是否正常运行"><a href="#5-测试PHP是否正常运行" class="headerlink" title="5.测试PHP是否正常运行"></a>5.测试PHP是否正常运行</h4><ul>
+<li>起始页 &gt; <strong>网站</strong> &gt; 右键<code>Default Web Site</code> &gt; <strong>浏览</strong></li>
+<li>删除两个文件</li>
+<li>新建<code>index.php</code>  <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">    <span class="meta">&lt;?php</span></span><br><span class="line">    phpinfo();</span><br><span class="line">    <span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">在IE浏览器中打开`<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>`，可以看到PHP资讯界面。</span><br><span class="line"></span><br><span class="line"><span class="comment">#### 6.开启Zend OPcache ####</span></span><br><span class="line"></span><br><span class="line">Zend OPcache用于加速PHP执行效率。</span><br><span class="line">记事本打开`C:\php\php.ini`，在底部添加代码</span><br><span class="line">```ini</span><br><span class="line">[Zend OPcache]</span><br><span class="line">zend_extension = <span class="string">&quot;C:\php\ext\php_opcache.dll&quot;</span></span><br><span class="line">opcache.memory_consumption=<span class="number">1024</span></span><br><span class="line">opcache.optimization_level=<span class="number">1</span></span><br><span class="line">opcache.interned_strings_buffer=<span class="number">8</span></span><br><span class="line">opcache.max_accelerated_files=<span class="number">4096</span></span><br><span class="line">opcache.revalidate_freq=<span class="number">60</span></span><br><span class="line">opcache.fast_shutdown=<span class="number">1</span></span><br><span class="line">opcache.enable=<span class="number">1</span></span><br><span class="line">opcache.enable_cli=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="7-安装MySQL数据库"><a href="#7-安装MySQL数据库" class="headerlink" title="7.安装MySQL数据库"></a>7.安装MySQL数据库</h4><ul>
+<li>Typical</li>
+<li>勾选<code>Launch</code></li>
+<li>Next</li>
+<li>Detailed Configuration &gt; Next</li>
+<li>Developer Machine &gt; Next</li>
+<li>Multifunctional Database &gt; Next</li>
+<li><code>C:</code> <code>Installation Path</code> &gt; Next</li>
+<li>Decision Support (DSS)/OLAP &gt; Next</li>
+<li>勾选 <code>Enable TCP/IP Networking</code>，输入<code>3306</code>、<code>Enable Strict Mode</code> &gt; Next</li>
+<li>Manual Selected Default Character Set / Collation，下拉<code>utf8</code> &gt; Next</li>
+<li>勾选 <code>Install As Windows Service</code>，下拉<code>MySQL</code>、<code>Launch the MySQL Server automatically</code>、<code>Include Bin Directory in Windows PATH</code> &gt; Next</li>
+<li>勾选 <code>Modify Security Settings</code>，输入密码</li>
+<li>Execute &gt; Finish</li>
+</ul>
+<h4 id="8-安装Emlog博客程序"><a href="#8-安装Emlog博客程序" class="headerlink" title="8.安装Emlog博客程序"></a>8.安装Emlog博客程序</h4><p>打开<code>C:\inetpub\wwwroot</code>，删除<code>index.php</code>，把Emlog下载文件解压后放入目录中。</p>
+<ul>
+<li>右键<code>wwwroot</code>目录</li>
+<li><strong>属性</strong> &gt; <strong>安全</strong> &gt; <strong>编辑</strong> &gt; <strong>添加</strong> &gt; <strong>高级</strong><ul>
+<li>选择此对象类型 <code>用户、组或内置安全主体</code></li>
+<li>立即查找</li>
+<li>选择<code>IUSR</code></li>
+</ul>
+</li>
+<li>勾选<strong>修改</strong>项<code>允许</code></li>
+</ul>
+<p>用管理员模式打开PowerShell</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -uroot -p&lt;password&gt;</span><br></pre></td></tr></table></figure>
+
+<p>创建数据库</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> emlog;</span><br></pre></td></tr></table></figure>
+
+<p>登录阿里云ECS控制台，在<strong>本实例安全组</strong>下<strong>配置规则</strong> &gt; <strong>快速创建规则</strong></p>
+<ul>
+<li>规则方向 <code>入方向</code></li>
+<li>授权策略 <code>允许</code></li>
+<li>常用端口(TCP) 勾选 <code>HTTP (80)</code></li>
+<li>自定义端口 <code>TCP</code></li>
+<li>优先级 <code>1</code></li>
+<li>授权类型 <code>IPv4地址段访问</code></li>
+<li>授权对象 <code>0.0.0.0/0</code></li>
+</ul>
+<p>在浏览器访问<code>公网IP/install.php</code>即可访问EMLOG安装程序，按提示输入配置参数，即安装成功。</p>
+<h4 id="拓展：域名解析配置"><a href="#拓展：域名解析配置" class="headerlink" title="拓展：域名解析配置"></a>拓展：域名解析配置</h4><p>国内域名需要备案。</p>
+<p>在阿里云控制台中，<strong>域名</strong>栏目下点击<strong>解析</strong> &gt; <strong>添加记录</strong></p>
+<ul>
+<li>记录类型 <code>A</code></li>
+<li>主机记录 为二级域名前缀</li>
+<li>解析线路 <code>默认</code></li>
+<li>记录值 <code>公网IP</code></li>
+<li>TTL <code>10分钟</code></li>
+</ul>
+<p>在远程桌面中，右键<code>Default Web Site</code> &gt; <strong>编辑绑定</strong> &gt; <strong>添加</strong></p>
+<ul>
+<li>主机名 <code>主机记录.域名</code></li>
+</ul>
+<p>即可透过域名访问博客。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>tracytangyc
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tracytangyc.github.io/2020/0810_aliyun-ecs-newbie-class1/" title="Class 1 | 阿里云：ECS 7天实践训练营 新人路线">https://tracytangyc.github.io/2020/0810_aliyun-ecs-newbie-class1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本站所有作品除特别声明外，均为站主原创，采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-SA</a> 版权协议进行许可。转载请附上原文出处链接和本声明。
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" rel="tag"># 阿里云</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/0808_aliyun-ecs-newbie-class4/" rel="prev" title="Class 4 | 阿里云：ECS 7天实践训练营 新人路线">
+      <i class="fa fa-chevron-left"></i> Class 4 | 阿里云：ECS 7天实践训练营 新人路线
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tracytangyc</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
