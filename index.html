@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">8</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
 
   </li>
   </ul>
@@ -180,7 +180,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -189,7 +189,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -234,6 +234,356 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0811_aliyun-ecs-newbie-class5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="tracytangyc">
+      <meta itemprop="description" content="共享知识，共赢快乐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晴仔TRACY">
+    </span>
+
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/0811_aliyun-ecs-newbie-class5/" class="post-title-link" itemprop="url">Class 5 | 阿里云：ECS 7天实践训练营 新人路线</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表</span>
+              
+
+              <time title="创建时间：2020/8/11 18:08 / 修改时间：20:25" itemprop="dateCreated datePublished" datetime="2020-08-11T18:08:56+08:00">2020/8/11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="NAS快速搭建个人网盘"><a href="#NAS快速搭建个人网盘" class="headerlink" title="NAS快速搭建个人网盘"></a>NAS快速搭建个人网盘</h1><blockquote>
+<p>第五课链接：<a target="_blank" rel="noopener" href="https://developer.aliyun.com/adc/scenario/bd0643a87c3e4cde8b488a56850df181">基于ECS和NAS搭建个人网盘</a></p>
+</blockquote>
+<h2 id="1-创建资源"><a href="#1-创建资源" class="headerlink" title="1. 创建资源"></a>1. 创建资源</h2><p>进入场景体验后，点击 <strong>免费开通</strong> ECS实验资源，获取2小时ECS和相关云服务。<br><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_1.png"></p>
+<p>可以看到<code>用户名</code>和<code>弹性IP</code>。</p>
+<br>
+
+<h2 id="2-连接ECS服务器"><a href="#2-连接ECS服务器" class="headerlink" title="2. 连接ECS服务器"></a>2. 连接ECS服务器</h2><p>在本地电脑终端中连接SSH，用户名应为<code>root</code>，并输入密码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh &lt;用户名&gt;@&lt;弹性IP&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_2.png"></p>
+<br>
+
+<h2 id="3-安装OwnCloud"><a href="#3-安装OwnCloud" class="headerlink" title="3. 安装OwnCloud"></a>3. 安装OwnCloud</h2><blockquote>
+<p>OwnCloud是一款开源的云存储软件，基于PHP的自建网盘。基本上是私人使用，没有用户注册功能，但是有用户添加功能，可以无限制地添加用户，并且支持多平台。</p>
+</blockquote>
+<p>添加一个新的软件源</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm --import https://download.owncloud.org/download/repositories/10.0/CentOS_7/repodata/repomd.xml.key</span><br><span class="line">wget http://download.owncloud.org/download/repositories/10.0/CentOS_7/ce:10.0.repo -O /etc/yum.repos.d/ce:10.0.repo</span><br></pre></td></tr></table></figure>
+
+<p>安装OwnCloud-files</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install owncloud-files</span><br></pre></td></tr></table></figure>
+
+<p>检查安装是否成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ll /var/www/html</span><br></pre></td></tr></table></figure>
+<p><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_3.png"></p>
+<br>
+
+<h2 id="4-安装Apache服务"><a href="#4-安装Apache服务" class="headerlink" title="4. 安装Apache服务"></a>4. 安装Apache服务</h2><p>安装Apache</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install httpd –y</span><br></pre></td></tr></table></figure>
+
+<p>启动Apache服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start httpd.service</span><br></pre></td></tr></table></figure>
+
+<p>浏览器打开<code>弹性IP</code>，可以看到测试网页表示安装成功。<br><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_4.png"></p>
+<p>打开Apache配置文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/httpd/conf/httpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>按<code>i</code>进入编辑模式, <code>&lt;Directory/&gt;</code>代码块后添加OwnCloud配置<br><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_5.png"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># owncloud config</span><br><span class="line">Alias &#x2F;owncloud &quot;&#x2F;var&#x2F;www&#x2F;html&#x2F;owncloud&#x2F;&quot;</span><br><span class="line">&lt;Directory &#x2F;var&#x2F;www&#x2F;html&#x2F;owncloud&#x2F;&gt;</span><br><span class="line">    Options +FollowSymlinks</span><br><span class="line">    AllowOverride All</span><br><span class="line">    &lt;IfModule mod_dav.c&gt;</span><br><span class="line">        Dav off</span><br><span class="line">    &lt;&#x2F;IfModule&gt;</span><br><span class="line">    SetEnv HOME &#x2F;var&#x2F;www&#x2F;html&#x2F;owncloud</span><br><span class="line">    SetEnv HTTP_HOME &#x2F;var&#x2F;www&#x2F;html&#x2F;owncloud</span><br><span class="line">&lt;&#x2F;Directory&gt;</span><br></pre></td></tr></table></figure>
+
+<p>按<code>Esc</code>退出编辑模式，<code>:wq</code>保存并退出vim。</p>
+<br>
+
+<h2 id="5-安装并配置PHP"><a href="#5-安装并配置PHP" class="headerlink" title="5. 安装并配置PHP"></a>5. 安装并配置PHP</h2><p>手动更新rpm源</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm   </span><br><span class="line">rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm</span><br></pre></td></tr></table></figure>
+
+<p>安装PHP 7.2版本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install php72w</span><br><span class="line">yum -y install php72w-cli php72w-common php72w-devel php72w-mysql php72w-xml php72w-odbc php72w-gd php72w-intl php72w-mbstring</span><br></pre></td></tr></table></figure>
+
+<p>检查PHP是否安装成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php -v</span><br></pre></td></tr></table></figure>
+<p><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_6.png"></p>
+<p>将PHP配置到Apache中，先查看<code>php.ini</code>所在位置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find / -name php.ini</span><br></pre></td></tr></table></figure>
+
+<p>用vi打开<code>httpd.conf</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /etc/httpd/conf/httpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>在文件最后添加<code>/etc/php.ini</code>为PHP初始化执行路径</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">PHPIniDir &#x2F;etc&#x2F;php.ini</span><br></pre></td></tr></table></figure>
+
+<p>保存并退出，重启Apache服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart httpd.service</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h2 id="6-配置OwnCloud"><a href="#6-配置OwnCloud" class="headerlink" title="6. 配置OwnCloud"></a>6. 配置OwnCloud</h2><p>在浏览器输入<code>&lt;弹性IP&gt;/owncloud</code>，即可创建管理员账号的登录名密码，完成设置OwnCloud。<br><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_7.png"></p>
+<br>
+
+<h2 id="7-挂载NAS服务"><a href="#7-挂载NAS服务" class="headerlink" title="7. 挂载NAS服务"></a>7. 挂载NAS服务</h2><blockquote>
+<p>文件存储 Network Attached Storage (NAS) 提供了简单的可扩展文件存储以供与 ECS 配合使用，多个ECS实例可以同时访问 NAS 文件系统，并且存储容量会随着添加和删除文件而自动弹性增长和收缩，为在多个实例或服务器上运行的工作负载和应用程序提供通用数据源。</p>
+</blockquote>
+<p>新建一个浏览器无痕模式窗口，访问<code>https://signin.aliyun.com/login.htm</code>（可通过体验页 <strong>一键复制登录url</strong> 按钮获得）。</p>
+<p>输入体验ECS的子用户名称和密码登录，在阿里云控制台打开<strong>文件存储NAS</strong>控制面板<br><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_8.png"></p>
+<p>进入<strong>文件系统列表</strong>，在左上角切换到NAS体验实例所在地区，点击打开实例<br><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_9.png"></p>
+<p>打开 <strong>挂载使用</strong> &gt; <strong>添加挂载点</strong> &gt; <strong>专有网络</strong><br><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_10.png"></p>
+<p>挂载点创建成功<br><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_11.png"></p>
+<p>在终端中安装NFS客户端</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install nfs-utils -y</span><br></pre></td></tr></table></figure>
+
+<p>回到控制台，点击 <strong>挂载文件系统到ECS</strong>，复制挂载命令<br><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_12.png"></p>
+<p>把最后的<code>/mnt</code>替换为<code>/var/www/html/owncloud/data/&lt;OwnCloud登录名&gt;</code>后，在终端执行（如下）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo mount -t nfs -o vers=3,nolock,proto=tcp,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport [NAS实例ID].cn-shanghai.nas.aliyuncs.com:/ /var/www/html/owncloud/data/&lt;OwnCloud登录名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>查看是否安装成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">df -h | grep aliyun</span><br></pre></td></tr></table></figure>
+<p><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_13.png"></p>
+<p><code>exit</code>命令可退出终端的SSH连接。</p>
+<p>在浏览器中登录OwnCloud即可使用个人网盘。默认目录和文件不可读写，需要在网盘中新建目录上传。<br><img src="../../images/2020/0811_aliyun-ecs-newbie-class5_14.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0811_aliyun-nextcloud/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="tracytangyc">
+      <meta itemprop="description" content="共享知识，共赢快乐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晴仔TRACY">
+    </span>
+
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/0811_aliyun-nextcloud/" class="post-title-link" itemprop="url">阿里云：安装打造个人专属网盘</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表</span>
+              
+
+              <time title="创建时间：2020/8/11 14:41 / 修改时间：18:03" itemprop="dateCreated datePublished" datetime="2020-08-11T14:41:08+08:00">2020/8/11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>课程链接：<a target="_blank" rel="noopener" href="https://edu.aliyun.com/course/150">【新手玩转云计算】打造个人专属网盘</a></p>
+</blockquote>
+<h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><p>ECS云服务器：选用**LAMP环境(Ubuntu16.04 Apache PHP7.1)**或以上版本的镜像。（以下实验使用LAMP环境(Ubuntu18.04 Apache PHP7.2)。）</p>
+<p>本地：<strong>FileZilla</strong> SFTP文件传输工具、<strong>PuTTY</strong> SSH连接终端。</p>
+<br>
+
+<h2 id="安装NextCloud网盘程序"><a href="#安装NextCloud网盘程序" class="headerlink" title="安装NextCloud网盘程序"></a>安装NextCloud网盘程序</h2><blockquote>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://download.nextcloud.com/server/releases/latest.zip">https://download.nextcloud.com/server/releases/latest.zip</a></p>
+</blockquote>
+<p>解压下载文档后把内容复制到<code>data/wwwroot/default/</code>或其子目录下。<br><img src="../../images/2020/0811_aliyun-nextcloud_1.png"></p>
+<p>在PuTTY中运行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i <span class="string">&#x27;s/;mbstring.func_overload = 0/mbstring.func_overload = 0/g&#x27;</span> /usr/<span class="built_in">local</span>/php/etc/php.ini</span><br><span class="line">rm -rf /usr/<span class="built_in">local</span>/php72/etc/php.d/ext-opcache.ini</span><br><span class="line">chown -R www /data/wwwroot/default/</span><br><span class="line">service httpd restart</span><br></pre></td></tr></table></figure>
+
+<p>用浏览器打开公网IP，显示Nextcloud初始页面<br><img src="../../images/2020/0811_aliyun-nextcloud_2.png"></p>
+<p>自由创建管理员账号 &gt; <strong>安装完成</strong>，安装步骤结束。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0810_aliyun-serverless-day6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="tracytangyc">
+      <meta itemprop="description" content="共享知识，共赢快乐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晴仔TRACY">
+    </span>
+
+    
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/0810_aliyun-serverless-day6/" class="post-title-link" itemprop="url">Day 6 | 阿里云：云开发校园合伙人创造营</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表</span>
+
+              <time title="创建时间：2020/8/10 22:27" itemprop="dateCreated datePublished" datetime="2020-08-10T22:27:57+08:00">2020/8/10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新</span>
+                <time title="修改时间：2020/8/11 18:03" itemprop="dateModified" ="2020-08-11T18:03:02+08:00">2020/8/11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">课程</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="使用Midway-Serverless及MySQL等数据库进行应用开发"><a href="#使用Midway-Serverless及MySQL等数据库进行应用开发" class="headerlink" title="使用Midway Serverless及MySQL等数据库进行应用开发"></a>使用Midway Serverless及MySQL等数据库进行应用开发</h1><h2 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h2><p>添加查看数据条数的功能（<code>src/apis/index.ts</code>）</p>
+<figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Func</span>(<span class="string">&#x27;todo.count&#x27;</span>)</span><br><span class="line"><span class="keyword">async</span> count() &#123;</span><br><span class="line">    <span class="keyword">const</span> cnt = <span class="keyword">await</span> <span class="built_in">this</span>.db.query(<span class="string">`select count(*) from todo`</span>);</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置API网关路径（<code>f.yml</code>)</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">count:</span></span><br><span class="line">    <span class="attr">handler:</span> <span class="string">todo.count</span></span><br><span class="line">    <span class="attr">events:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">apigw:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">/api/count</span></span><br></pre></td></tr></table></figure>
+
+<p>访问<code>开发服务器地址/api/count</code><br><img src="../../images/2020/0810_aliyun-serverless-day6_1.png"></p>
+<p>若使用默认环境变量，To-do List是公用的，有需要可以自行购买RDS实例。</p>
+<p>老师提供的示范实例：<br><img src="../../images/2020/0810_aliyun-serverless-day6_2.jpg"></p>
+<p>【实际应用中要在<strong>应用管理</strong>中修改环境变量，切忌hard code】</p>
+<br>
+
+<h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><p>创建应用：<strong>实验</strong> &gt; <strong>Midway Serverless MySQL数据库示例</strong> (依然是to-do list的例子)<br><img src="../../images/2020/0810_aliyun-serverless-day6_3.png"></p>
+<p>安装开发依赖</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<p>启动应用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="项目架构介绍"><a href="#项目架构介绍" class="headerlink" title="项目架构介绍"></a>项目架构介绍</h4><ol>
+<li><p><code>f.yml</code>：<br> 路由匹配函数</p>
+ <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">functions:</span></span><br><span class="line">    <span class="attr">render:</span></span><br><span class="line">        <span class="attr">handler:</span> <span class="string">render.handler</span></span><br><span class="line">        <span class="attr">events:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">apigw:</span></span><br><span class="line">            <span class="attr">path:</span> <span class="string">/*</span></span><br><span class="line">    <span class="attr">list:</span></span><br><span class="line">        <span class="attr">handler:</span> <span class="string">todo.list</span></span><br><span class="line">        <span class="attr">events:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">apigw:</span></span><br><span class="line">            <span class="attr">path:</span> <span class="string">/api/list</span></span><br><span class="line">    <span class="attr">update:</span></span><br><span class="line">        <span class="string">...</span></span><br><span class="line">    <span class="attr">remove:</span></span><br><span class="line">        <span class="string">...</span></span><br><span class="line">    <span class="attr">add:</span></span><br><span class="line">        <span class="string">...</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>src/apis/index.ts</code>：<br> 应用主函数（数据库操作封装）</p>
+ <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Func</span>(<span class="string">&#x27;todo.update&#x27;</span>)</span><br><span class="line"><span class="keyword">async</span> update() &#123;...&#125;</span><br><span class="line"><span class="meta">@Func</span>(<span class="string">&#x27;todo.remove&#x27;</span>)</span><br><span class="line"><span class="keyword">async</span> remove() &#123;...&#125;</span><br><span class="line"><span class="meta">@Func</span>(<span class="string">&#x27;todo.add&#x27;</span>)</span><br><span class="line"><span class="keyword">async</span> add() &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p> 从<code>configuration.ts</code>注入数据库连接实例</p>
+ <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Inject</span>()</span><br><span class="line">ctx;</span><br><span class="line"><span class="meta">@Inject</span>()</span><br><span class="line">db;</span><br></pre></td></tr></table></figure>
+<p> 中间件渲染</p>
+ <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Func</span>(<span class="string">&#x27;render.handler&#x27;</span>, &#123; middleware: [ <span class="string">&#x27;fmw:staticFile&#x27;</span> ]&#125;)    <span class="comment">//前端静态文件（public/目录下）</span></span><br><span class="line"><span class="keyword">async</span> render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Please refresh this page later.&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>src/apis/configuration.ts</code>：<br> 应用初次启动时的配置（由<code>config.default.ts</code>注入），例如创建数据库连接实例</p>
+ <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Config</span>()</span><br><span class="line">dbConfig</span><br><span class="line"><span class="keyword">async</span> onReady(container) &#123;    <span class="comment">//验证数据库连接</span></span><br><span class="line">    <span class="keyword">const</span> db = <span class="keyword">new</span> Sequelize(<span class="built_in">this</span>.dbConfig.database, <span class="built_in">this</span>.dbConfig.username, <span class="built_in">this</span>.dbConfig.password, &#123;</span><br><span class="line">        host: <span class="built_in">this</span>.dbConfig.host,</span><br><span class="line">        port: <span class="built_in">this</span>.dbConfig.port,</span><br><span class="line">        ...</span><br><span class="line">    &#125;);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>src/apis/config/config.default.ts</code>：<br> 应用环境配置，例如环境变量</p>
+ <figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">exports</span>.dbConfig = &#123;</span><br><span class="line">    host: process.env.MIDWAY_RDS_HOST,</span><br><span class="line">    port: process.env.MIDWAY_RDS_PORT || <span class="number">3306</span>,</span><br><span class="line">    database: process.env.MIDWAY_RDS_DBNAME,</span><br><span class="line">    username: process.env.MIDWAY_RDS_USERNAME,</span><br><span class="line">    password: process.env.MIDWAY_RDS_PASSWORD</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="OTS-vs-RDS"><a href="#OTS-vs-RDS" class="headerlink" title="OTS vs RDS"></a>OTS vs RDS</h4><p>OTS：非关系型。按量（数据数量）付费<br>RDS (for MySQL, PostgreSQL, Redis etc.)：关系型。先行购买实例，按规格包年包月或按量付费。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0810_aliyun-ecs-newbie-class1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -259,10 +609,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表</span>
-              
 
-              <time title="创建时间：2020/8/10 15:04 / 修改时间：19:25" itemprop="dateCreated datePublished" datetime="2020-08-10T15:04:30+08:00">2020/8/10</time>
+              <time title="创建时间：2020/8/10 15:04" itemprop="dateCreated datePublished" datetime="2020-08-10T15:04:30+08:00">2020/8/10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新</span>
+                <time title="修改时间：2020/8/11 14:41" itemprop="dateModified" ="2020-08-11T14:41:52+08:00">2020/8/11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -819,87 +1175,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0730_bash-basics/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="tracytangyc">
-      <meta itemprop="description" content="共享知识，共赢快乐">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="晴仔TRACY">
-    </span>
-
-    
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/0730_bash-basics/" class="post-title-link" itemprop="url">基础 Bash命令 | Bash与Python脚本编程（英文）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表</span>
-
-              <time title="创建时间：2020/7/30 21:31" itemprop="dateCreated datePublished" datetime="2020-07-30T21:31:31+08:00">2020/7/30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新</span>
-                <time title="修改时间：2020/8/10 15:09" itemprop="dateModified" ="2020-08-10T15:09:07+08:00">2020/8/10</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="Command-Line-Shell"><a href="#Command-Line-Shell" class="headerlink" title="Command Line Shell"></a>Command Line Shell</h2><h4 id="A-Files-and-Directories"><a href="#A-Files-and-Directories" class="headerlink" title="A. Files and Directories"></a>A. Files and Directories</h4><ol>
-<li><p>new directory: <code>mkdir &#123;mynewdir&#125;</code></p>
-</li>
-<li><p>go to directory: <code>cd &#123;mynewdir&#125;</code></p>
-</li>
-<li><p>show present working directory: <code>pwd</code></p>
-</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/0730_bash-basics/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
