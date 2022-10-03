@@ -1,0 +1,204 @@
+<html>
+    <title>阿卡社面试曲目</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <body>
+        <div>
+            <div style="width: 100%; padding: 1rem">
+                <div class="main">
+                    <div>
+                        <input type="checkbox" class="btn-check" id="button-pentatonix" style="width: 100%">
+                        <label class="btn btn-outline-primary" for="button-pentatonix">原唱</label>
+                    </div>
+                    <!-- <div>
+                        <input type="checkbox" class="btn-check" id="button-solo" checked>
+                        <label class="btn btn-outline-success" for="button-solo" style="display:block">主旋律</label>
+                        <input type="range" id="volume-solo" min="0" max="100" value="100" style="width:120px">
+                    </div> -->
+                    <div>
+                        <input type="checkbox" class="btn-check" id="button-soprano" checked>
+                        <label class="btn btn-outline-success" for="button-soprano" style="display:block">女高</label>
+                        <input type="range" id="volume-soprano" min="0" max="100" value="100" style="width:120px">
+                    </div>
+                    <div>
+                        <input type="checkbox" class="btn-check" id="button-alto" checked>
+                        <label class="btn btn-outline-success" for="button-alto" style="display:block">女中</label>
+                        <input type="range" id="volume-alto" min="0" max="100" value="100" style="width:120px">
+                    </div>
+                    <div>
+                        <input type="checkbox" class="btn-check" id="button-tenor" checked>
+                        <label class="btn btn-outline-success" for="button-tenor" style="display:block">男高</label>
+                        <input type="range" id="volume-tenor" min="0" max="100" value="100" style="width:120px">
+                    </div>
+                    <div>
+                        <input type="checkbox" class="btn-check" id="button-bass" checked>
+                        <label class="btn btn-outline-success" for="button-bass" style="display:block">男低</label>
+                        <input type="range" id="volume-bass" min="0" max="100" value="100" style="width:120px">
+                    </div>
+                    <div>
+                        <input type="checkbox" class="btn-check" id="button-tempo" checked>
+                        <label class="btn btn-outline-success" for="button-tempo" style="display:block">打击乐</label>
+                        <input type="range" id="volume-tempo" min="0" max="100" value="100" style="width:120px">
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%">
+                <video controls muted width="800" style="display:block; margin:auto" id="video">
+                    <source src="src/Score.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+        <audio id="audio-pentatonix">
+            <source src="src/Pentatonix.mp3" type="audio/mpeg" />
+        </audio>
+        <audio id="audio-solo">
+            <source src="src/Solo.mp3" type="audio/mpeg" />
+        </audio>
+        <audio id="audio-soprano">
+            <source src="src/Soprano.mp3" type="audio/mpeg" />
+        </audio>
+        <audio id="audio-alto">
+            <source src="src/Alto.mp3" type="audio/mpeg" />
+        </audio>
+        <audio id="audio-tenor">
+            <source src="src/Tenor.mp3" type="audio/mpeg" />
+        </audio>
+        <audio id="audio-bass">
+            <source src="src/Bass.mp3" type="audio/mpeg" />
+        </audio>
+        <audio id="audio-tempo">
+            <source src="src/Tempo.mp3" type="audio/mpeg" />
+        </audio>
+    </body>
+    <style>
+        label {
+            margin: 0 1rem;
+        }
+        .main {
+            display: flex;
+            justify-content: center;
+        }
+        .main > div {
+            margin: 0 0.5rem;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const audioPentatonix = document.getElementById("audio-pentatonix");
+            // const audioSolo = document.getElementById("audio-solo");
+            const audioSoprano = document.getElementById("audio-soprano");
+            const audioAlto = document.getElementById("audio-alto");
+            const audioTenor = document.getElementById("audio-tenor");
+            const audioBass = document.getElementById("audio-bass");
+            const audioTempo = document.getElementById("audio-tempo");
+
+            const audios = [
+                audioPentatonix,
+                // audioSolo,
+                audioSoprano,
+                audioAlto,
+                audioTenor,
+                audioBass,
+                audioTempo,
+            ];
+
+            audios.slice(1).forEach((audio) => {
+                audio.volume = 0.3;
+            });
+
+            const buttonPentatonix = document.getElementById("button-pentatonix");
+            // const buttonSolo = document.getElementById("button-solo");
+            const buttonSoprano = document.getElementById("button-soprano");
+            const buttonAlto = document.getElementById("button-alto");
+            const buttonTenor = document.getElementById("button-tenor");
+            const buttonBass = document.getElementById("button-bass");
+            const buttonTempo = document.getElementById("button-tempo");
+
+            const buttons = [
+                buttonPentatonix,
+                // buttonSolo,
+                buttonSoprano,
+                buttonAlto,
+                buttonTenor,
+                buttonBass,
+                buttonTempo,
+            ];
+
+            const volumePentatonix = null; //document.getElementById("volume-pentatonix");
+            // const volumeSolo = document.getElementById("volume-solo");
+            const volumeSoprano = document.getElementById("volume-soprano");
+            const volumeAlto = document.getElementById("volume-alto");
+            const volumeTenor = document.getElementById("volume-tenor");
+            const volumeBass = document.getElementById("volume-bass");
+            const volumeTempo = document.getElementById("volume-tempo");
+
+            const volumes = [
+                volumePentatonix,
+                // volumeSolo,
+                volumeSoprano,
+                volumeAlto,
+                volumeTenor,
+                volumeBass,
+                volumeTempo,
+            ];
+
+            const video = document.getElementById("video");
+
+            const updatePlay = () => {
+                const time = video.currentTime;
+                if (buttonPentatonix.checked) {
+                    audioPentatonix.currentTime = time;
+                    audioPentatonix.play();
+                    audios.slice(1).forEach((audio) => {
+                        audio.pause();
+                    });
+                } else {
+                    audios.forEach((audio, index) => {
+                        if (buttons[index].checked) {
+                            if (audio.paused) {
+                                audio.currentTime = time;
+                                audio.play();
+                            }
+                        } else {
+                            audio.pause();
+                        }
+                    });
+                }
+            };
+
+            video.addEventListener("play", () => {
+                video.addEventListener("timeupdate", updatePlay, { once: true });
+            });
+
+            video.addEventListener("pause", () => {
+                audios.forEach((audio) => {
+                    audio.pause();
+                });
+            });
+
+            buttonPentatonix.addEventListener("change", () => {
+                buttons.slice(1).forEach((button) => {
+                    button.disabled = buttonPentatonix.checked;
+                });
+                volumes.slice(1).forEach((slider) => {
+                    slider.disabled = buttonPentatonix.checked;
+                });
+            });
+
+            buttons.forEach((button, index) => {
+                button.addEventListener("change", () => {
+                    if (!video.paused) {
+                        updatePlay();
+                    }
+                });
+            });
+
+            volumes.forEach((slider, index) => {
+                if (slider) {
+                    slider.addEventListener("input", () => {
+                        audios[index].volume = 0.003 * slider.value;
+                    });
+                }
+            });
+        };
+    </script>
+</html>

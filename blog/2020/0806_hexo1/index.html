@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#31475E">
+<meta name="generator" content="Hexo 5.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#31475E">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"tracytangyc.github.io","root":"/","scheme":"Gemini","version":"8.0.0-rc.5","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false};
+  </script>
+
+  <meta name="description" content="前言最近误打误撞地参加了阿里云的《云开发校园合伙人创造营》，发现许多小伙伴都有自己的博客。自己只会一点基础的HTML、CSS和PHP，又心痒想赶快拥有一个，于是就有了这个博客。 综合容易上手但又保留一些自己开发部署的空间这两点，我选择了hexo，它还可以直接推到GitHub Pages (github.io)上，很方便。现在还没搭建好，先发一篇文章露个脸~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客 搭建笔记（一）">
+<meta property="og:url" content="https://tracytangyc.github.io/2020/0806_hexo1/index.html">
+<meta property="og:site_name" content="晴仔TRACY">
+<meta property="og:description" content="前言最近误打误撞地参加了阿里云的《云开发校园合伙人创造营》，发现许多小伙伴都有自己的博客。自己只会一点基础的HTML、CSS和PHP，又心痒想赶快拥有一个，于是就有了这个博客。 综合容易上手但又保留一些自己开发部署的空间这两点，我选择了hexo，它还可以直接推到GitHub Pages (github.io)上，很方便。现在还没搭建好，先发一篇文章露个脸~">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tracytangyc.github.io/images/2020/0806_hexo1_1.png">
+<meta property="article:published_time" content="2020-08-06T04:59:17.000Z">
+<meta property="article:modified_time" content="2020-08-10T07:06:51.037Z">
+<meta property="article:author" content="tracytangyc">
+<meta property="article:tag" content="hexo, 网页">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tracytangyc.github.io/images/2020/0806_hexo1_1.png">
+
+<link rel="canonical" href="https://tracytangyc.github.io/2020/0806_hexo1/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Hexo博客 搭建笔记（一） | 晴仔TRACY</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">晴仔TRACY</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">15</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点导航
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85"><span class="nav-text">1. 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%88%9B%E5%BB%BA%E7%BD%91%E7%AB%99%E4%B8%8E%E6%96%87%E7%AB%A0"><span class="nav-text">2. 创建网站与文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E9%83%A8%E7%BD%B2%E7%BD%91%E7%AB%99"><span class="nav-text">3. 部署网站</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub-Pages%E8%AE%BE%E7%BD%AE"><span class="nav-text">GitHub Pages设置</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="tracytangyc"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">tracytangyc</p>
+  <div class="site-description" itemprop="description">共享知识，共赢快乐</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tracytangyc" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tracytangyc" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tracytangyc@163.com" title="E-Mail → mailto:tracytangyc@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tracytangyc.github.io/2020/0806_hexo1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="tracytangyc">
+      <meta itemprop="description" content="共享知识，共赢快乐">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晴仔TRACY">
+    </span>
+
+    
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo博客 搭建笔记（一）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表</span>
+
+              <time title="创建时间：2020/8/6 12:59" itemprop="dateCreated datePublished" datetime="2020-08-06T12:59:17+08:00">2020/8/6</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新</span>
+                <time title="修改时间：2020/8/10 15:06" itemprop="dateModified" ="2020-08-10T15:06:51+08:00">2020/8/10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近误打误撞地参加了阿里云的《云开发校园合伙人创造营》，发现许多小伙伴都有自己的博客。自己只会一点基础的HTML、CSS和PHP，又心痒想赶快拥有一个，于是就有了这个博客。</p>
+<p>综合容易上手但又保留一些自己开发部署的空间这两点，我选择了hexo，它还可以直接推到GitHub Pages (github.io)上，很方便。现在还没搭建好，先发一篇文章露个脸~</p>
+<a id="more"></a>
+
+<p>我还没有JavaScript, json, typescript等基础，对服务器、http、IP、域名、Serverless、NodeJS框架等等的概念，也是这两天才大致捋清楚。所以这系列的文章就当是记录一下我<del>学习</del>囫囵吞枣的历程，或许一些操作不太规范，但先追求完成，在追求完美。从经验中学习，我也会慢慢补齐知识漏洞的！<br><br></p>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h2><p>我的运行环境：Windows Ubuntu WSL（指令与一般Ubuntu相同）<br>先安装NodeJS</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt upgrade</span><br><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -</span><br><span class="line">sudo apt nodejs</span><br></pre></td></tr></table></figure>
+
+<p>查看NodeJS与npm版本（目前最新版本分别为v14.x和v6.x）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nodejs -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+
+<p>接下来需要安装并配置好自己的git，这里不作展示了。</p>
+<p>安装hexo</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p><code>-g</code>指general，使hexo可全局使用，而非只安装在一个项目中。<br><br></p>
+<h2 id="2-创建网站与文章"><a href="#2-创建网站与文章" class="headerlink" title="2. 创建网站与文章"></a>2. 创建网站与文章</h2><p>新建一个hexo项目</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+
+<p>安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> &lt;directory&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>打开你的项目后，就可以正式开工了。<br>首先在项目根目录下的<code>_config.yml</code>修改基本网站信息，比如</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">晴仔的博客</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;我的详细描述~&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span>    <span class="comment">#用于SEO的关键字</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">Tracy</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span></span><br><span class="line"><span class="attr">timezone:</span>    <span class="comment">#默认本地时区</span></span><br></pre></td></tr></table></figure>
+
+<p>更多配置选项参考，可以前往hexo官方文档 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/configuration">https://hexo.io/zh-cn/docs/configuration</a><br><code>hexo init</code>新建的项目默认采用landscape主题，并已经导入了主题文件，在根目录下的<code>/themes/landscape</code>中。<br>更多主题可以在 <a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a> 或者第三方找到。如需更换，首先修改上述<code>_config.yml</code>中的以下信息：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">&lt;theme-name&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>再把主题代码放置（如git clone）到<code>/themes</code>目录下。如果主题有新的依赖，需要修改<code>packages.json</code>，并再次执行<code>npm i</code> (i for install)。</p>
+<p>接着配置你的域名。如果使用GitHub Pages（GitHub免费提供的<code>&lt;username&gt;.github.io</code>域名），<code>_config.yml</code>代码如下</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/&lt;username&gt;/&lt;username&gt;.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line">  <span class="attr">message:</span> <span class="string">hexo</span> <span class="string">deploy</span>    <span class="comment">#自定义git commit时的消息</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来尝试添加一篇文章，若文章标题包含空格，采用双引号包裹</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这将默认生成一个markdown文件到<code>/sources/_posts</code>目录下，若需修改目录，在上述命令中加入<code>-p &lt;directory&gt;</code>。<br>接着就可以开始写文章啦~<br><br></p>
+<h2 id="3-部署网站"><a href="#3-部署网站" class="headerlink" title="3. 部署网站"></a>3. 部署网站</h2><p>如果需要快速托管代码到Github</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>可以先清除缓存和已产生的静态文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+
+<p>生成静态文件 (g for generate)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<p>启动伺服器 (s for server)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>终端会提示以<code>http://localhost:4000/</code>查看网站。按<code>Ctrl+C</code>结束进程。</p>
+<p>部署网站 (d for deploy)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>可以采用<code>hexo d -g</code> 或 <code>hexo g -d</code>同时完成generate和deploy。</p>
+<p><strong>大功告成！</strong><br><br></p>
+<h2 id="GitHub-Pages设置"><a href="#GitHub-Pages设置" class="headerlink" title="GitHub Pages设置"></a>GitHub Pages设置</h2><p>如果你的GitHub账号设置了<code>Keep my email addresses private</code>，你需要提前配置git，否则hexo无法push代码到你的仓库中<br><img src="../../images/2020/0806_hexo1_1.png"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;email you use for github&quot;</span></span><br></pre></td></tr></table></figure>
+<p>然后每次deploy的时候按终端提示输入GitHub的username和password即可。</p>
+<br>
+
+<hr>
+<p><small><em>参考资料：</em></small><br><small>1. hexo. <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/index.html">文档.</a></small><br><small>2. Medium.com. <a target="_blank" rel="noopener" href="https://medium.com/@ab.kotecha/successfully-install-the-latest-nodejs-on-the-latest-ubuntu-on-wsl-v1-fix-gpg-key-18d532250219">Successfully install the latest NodeJS on the latest Ubuntu on WSL (v1), fix GPG key error.</a></small><br><small>3. winney. <a target="_blank" rel="noopener" href="https://winney07.github.io/2018/08/01/Hexo-GitHub-Pages-%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">Hexo + GitHub Pages 搭建个人博客.</a></small><br><small>4. GitHub.com. <a target="_blank" rel="noopener" href="https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/setting-your-commit-email-address">Setting your commit email address.</a> </small></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>tracytangyc
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://tracytangyc.github.io/2020/0806_hexo1/" title="Hexo博客 搭建笔记（一）">https://tracytangyc.github.io/2020/0806_hexo1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本站所有作品除特别声明外，均为站主原创，采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-SA</a> 版权协议进行许可。转载请附上原文出处链接和本声明。
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo-%E7%BD%91%E9%A1%B5/" rel="tag"># hexo, 网页</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/0806_aliyun-ecs-newbie-class2/" rel="prev" title="Class 2 | 阿里云：ECS 7天实践训练营 新人路线">
+      <i class="fa fa-chevron-left"></i> Class 2 | 阿里云：ECS 7天实践训练营 新人路线
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/0806_aliyun-serverless-day4/" rel="next" title="Day 4 | 阿里云：云开发校园合伙人创造营">
+      Day 4 | 阿里云：云开发校园合伙人创造营 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tracytangyc</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
